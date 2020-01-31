@@ -62,7 +62,7 @@ import javafx.util.Callback;
             close.setFocusTraversable(false);
             close.setOnAction(e->{
                 this.close();
-                // new UserProducer().getUserFactory(CurrentUser.getCurrentUser().getRole()).getPortal().show();
+                new UserProducer().getUserFactory(CurrentUser.getCurrentUser().getRole()).getPortal().show();
             });
 
             setTableappearance();
