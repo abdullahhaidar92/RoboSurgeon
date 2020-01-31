@@ -5,7 +5,7 @@
  }
  .header {
      -fx-background-color:
-           linear-gradient(to bottom right,brown,derive(yellow,-20%));
+           linear-gradient(to bottom right,teal,derive(yellow,-20%));
      -fx-background-insets: 0 0 0 0, 1 0 1 0;
      -fx-background-radius: 0, 0 ;
      -fx-padding:2,15,0,0;
