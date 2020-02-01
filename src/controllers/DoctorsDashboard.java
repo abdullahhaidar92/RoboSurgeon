@@ -2,6 +2,7 @@ package controllers;
 
 import models.DashboardModel;
 import models.Doctor;
+import views.CreateSurgeryView;
 import views.DashboardView;
 import views.DoctorDetailsView;
 import components.Window;
@@ -23,8 +24,21 @@ public class DoctorsDashboard extends Dashboard {
 
     @Override
     public void showCreateForm() {
-        Window window=new Window("Create",500,700);
-        window.setContent(new VBox(new Text("Create Doctor ")));
+        Window window=new Window("Create",500,300);
+        Doctor doc=(Doctor)getModel().getProfile(0);
+        ArrayList<String > patients=new ArrayList();
+        patients.add("Abdullah Haidar ( 1 )");
+        patients.add("Hadi Jaidar ( 2 )");
+        patients.add("Noura Joudeih ( 3 )");
+        patients.add("Abdullah Haidar ( 4 )");
+        patients.add("Hadi Jaidar ( 5 )");
+        patients.add("Noura Joudeih ( 6 )");
+        ArrayList<String > surgeries=new ArrayList();
+        surgeries.add("Left Brain Surgery 1");
+        surgeries.add("Right Brain Surgery 2");
+        surgeries.add("Left Brain Surgery 3");
+        surgeries.add("Right Brain Surgery 4");
+        window.setContent(new CreateSurgeryView(doc,patients,surgeries));
         window.showAndWait();
 
     }

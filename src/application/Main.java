@@ -15,7 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws SQLException {
         CurrentUser.getCurrentUser().setRole("admin");
-        primaryStage = new UserProducer().getUserFactory("admin").getPortal();
+         primaryStage = new UserProducer().getUserFactory("admin").getPortal();
         // primaryStage = new UserProducer().getUserFactory("admin").getDashboard("doctors").getView();
         // primaryStage = new UserProducer().getUserFactory("doctor").getPortal();
         // primaryStage = new UserProducer().getUserFactory("assistant").getPortal();
