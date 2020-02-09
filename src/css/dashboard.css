@@ -14,12 +14,12 @@
 
  }
  .table-view {
-     -fx-base: #082b2a;
-     -fx-control-inner-background: #082b2a;
-     -fx-background-color:#082b2a;
-     -fx-table-cell-border-color: yellow;
-     -fx-table-header-border-color: transparent;
-     -fx-padding: 5;
+      -fx-base: #082b2a;
+        -fx-control-inner-background: white;
+        -fx-background-color:#082b2a;
+        -fx-table-cell-border-color: yellow;
+        -fx-table-header-border-color: transparent;
+        -fx-padding: 5;
  }
  .text-field {
      -fx-font-size: 18px;

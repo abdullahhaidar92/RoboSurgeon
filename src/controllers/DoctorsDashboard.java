@@ -2,9 +2,7 @@ package controllers;
 
 import models.DashboardModel;
 import models.Doctor;
-import views.CreateSurgeryView;
-import views.DashboardView;
-import views.DoctorDetailsView;
+import views.*;
 import components.Window;
 import components.Dashboard;
 import javafx.scene.layout.VBox;
@@ -22,6 +20,23 @@ public class DoctorsDashboard extends Dashboard {
 
     }
 
+    @Override
+    public void showCreateForm() {
+        Window window=new Window("Add new doctor",500,500);
+        // content Vbox
+        Doctor d = new Doctor();
+        DoctorCreateView view=new DoctorCreateView(d);
+        view.setParent(window);
+        window.setParentStage(this);
+        window.setContent(view);
+        window.showAndWait();
+        getModel().create(d);
+        reloadProfiles();
+
+    }
+
+
+    /*
     @Override
     public void showCreateForm() {
         Window window=new Window("Create",500,300);
@@ -43,6 +58,7 @@ public class DoctorsDashboard extends Dashboard {
 
     }
 
+     */
     @Override
     public void showDetails(int id) {
         Doctor selectedDoctor =(Doctor)getModel().getProfile(id);
@@ -55,10 +71,16 @@ public class DoctorsDashboard extends Dashboard {
 
     @Override
     public void showEditForm(int id) {
-        Window window=new Window("Edit",500,400);
-        window.setContent(new VBox(new Text("Doctor : " +id)));
+        Doctor selectedDoctor =(Doctor)getModel().getProfile(id);
+        Window window=new Window("Edit Doctor",500,500);
+        DoctorEditView view=new DoctorEditView(selectedDoctor);
+        window.setContent(view);
+        view.setParent(window);
         window.showAndWait();
+        getModel().edit(selectedDoctor);
+        reloadProfiles();
     }
+
 
     @Override
     public void showDeleteForm(int id) {

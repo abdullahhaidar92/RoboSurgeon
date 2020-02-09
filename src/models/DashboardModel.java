@@ -27,7 +27,14 @@ public abstract class DashboardModel<T> {
     public void setProfiles(ArrayList< T> profiles){
         this.profiles=profiles;
     }
+    public void create(T d) {
+        // TODO Auto-generated method stub
 
+    }
+    public void edit(T d) {
+        // TODO Auto-generated method stub
+
+    }
     public ArrayList<T> getProfiles() {
         return profiles;
     }
