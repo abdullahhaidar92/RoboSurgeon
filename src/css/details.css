@@ -15,4 +15,6 @@
        -fx-background-radius: 5, 5;
        -fx-padding:5 10 5 10;
 }
-
+.root{
+  -fx-background-color:  linear-gradient(to bottom right,derive(wheat,+50%),derive(wheat,+80%));
+}

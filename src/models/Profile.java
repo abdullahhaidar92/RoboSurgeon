@@ -1,4 +1,6 @@
 package models;
+import java.sql.Date;
+import java.time.LocalDate;
 
 public abstract class Profile {
     private int profileId;
@@ -7,10 +9,11 @@ public abstract class Profile {
     private String lastName;
     private String email;
     private String phone;
-    private String birthDate;
+    private Date birthDate;
     private String address;
     private String bloodType;
 
+    public Profile(){};
     public Profile(int profileId, String firstName, String middleName, String lastName) {
         this.profileId = profileId;
         this.firstName = firstName;
@@ -18,7 +21,7 @@ public abstract class Profile {
         this.lastName = lastName;
     }
 
-    public Profile(int profileId, String firstName, String middleName, String lastName, String email, String phone, String birthDate, String address, String bloodType) {
+    public Profile(int profileId, String firstName, String middleName, String lastName, String email, String phone, Date birthDate, String address, String bloodType) {
         this(profileId,firstName,middleName,lastName);
         this.email = email;
         this.phone = phone;
@@ -75,12 +78,12 @@ public abstract class Profile {
         this.phone = phone;
     }
 
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthDate(Date localDate) {
+        this.birthDate = localDate;
     }
 
     public String getAddress() {

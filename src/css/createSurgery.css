@@ -1,9 +1,8 @@
 .choice-box {
   -fx-background-color: teal;
-  -fx-mark-color: orange; // arrow color
+  -fx-mark-color: orange; 
 }
 
-// Selected item text color on the control itself
 .choice-box > .label { -fx-text-fill: white; }
 
 .name{

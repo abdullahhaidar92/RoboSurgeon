@@ -15,6 +15,7 @@ import javafx.stage.StageStyle;
 public class Window extends Stage {
 
     private VBox root =new VBox();
+
     private Dashboard dashboard;
 
     public Window(String title, double width, double height){
@@ -50,5 +51,8 @@ public class Window extends Stage {
 
     public void setParentStage(Dashboard parent) {
         this.dashboard = parent;
+    }
+    public Dashboard getDashboard() {
+        return dashboard;
     }
 }

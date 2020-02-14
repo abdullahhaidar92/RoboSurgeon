@@ -10,9 +10,6 @@ public class DoctorsDashboardView extends DashboardView<Doctor> {
         addStringColumn("first name","firstName");
         addStringColumn("last name","lastName");
         addStringColumn("Speciality");
-
     }
-
-
 
 }

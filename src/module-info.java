@@ -4,5 +4,7 @@ module SoftwareProject {
     requires javafx.controls;
     requires java.sql;
     opens application;
+    opens controllers;
+    opens views;
     opens models;
 }
