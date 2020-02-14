@@ -1,0 +1,20 @@
+.name{
+    -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 15px;
+    -fx-font-weight:bold;
+    -fx-text-fill:teal;
+    -fx-background-radius: 5, 5;
+    -fx-padding:5;
+}
+
+.value{
+-fx-background-color: red;
+-fx-text-fill:white;
+       -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+       -fx-font-size: 15px;
+       -fx-background-radius: 5, 5;
+       -fx-padding:5 10 5 10;
+}
+.root{
+  -fx-background-color:  linear-gradient(to bottom right,derive(wheat,+50%),derive(wheat,+80%));
+}
