@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4aa54722-7a6a-4471-ad13-dbe1adba940a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/images/Empty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/RoboSurgeonBG.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/assis.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/doc_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/lock.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/pat_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/surgery.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/user.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/wrong.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/Tables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/AdminFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/AssistantFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/Database.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/DoctorFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/UserFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/UserProducer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ImageIcon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Portal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TimeField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Validation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Window.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/AssisstantDashboard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/DoctorsDashboard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/OperationDashboard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/PatientDashboard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/createSurgery.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/dashboard.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/details.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/imageIcon.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/portal.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/window.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/UnAuthorizedUserException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/AssisstantDashboardModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Assistant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/CurrentUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/DashboardModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Doctor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/DoctorsDashboardModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Machine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Operation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/OperationDashboardModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Patient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/PatientDashboardModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Profile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Surgery.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/FormValidation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AssisstantDashboardView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AssistantCreateView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AssistantDeleteView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AssistantEditView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AssitantDetailsView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/CreatePatientView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/CreateSurgeryView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/DashboardView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/DeleteOperationView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/DoctorCreateView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/DoctorDeleteView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/DoctorDetailsView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/DoctorEditView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/DoctorsDashboardView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/EditPatientView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/LoginView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/OperationDashboardView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/OperationDetailsView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/PatientDashboardView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/PatientDeleteView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/PatientDetailsView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/application/AdminFactoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/application/UserProducerTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Xn43XqZQGRn34ERhegiM9SgjeV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/SoftwareProject" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4aa54722-7a6a-4471-ad13-dbe1adba940a" name="Default Changelist" comment="" />
+      <created>1581668325921</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581668325921</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581668538548">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1581668538548" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1581668413846">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1581668413846" />
+  </component>
+</project>
