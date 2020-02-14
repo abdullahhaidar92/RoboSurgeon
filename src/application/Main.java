@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import models.CurrentUser;
+import views.OperationDashboard;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -18,6 +19,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws SQLException, IOException {
+        new OperationDashboard().show();
+        /*
          FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/LoginView.fxml"));
          Parent root = loader.load();
         Scene scene = new Scene(root,670,512);
@@ -25,7 +28,7 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
-
+*/
 
     }
     public static Stage getPrimaryStage(){
