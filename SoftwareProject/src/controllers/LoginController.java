@@ -65,7 +65,8 @@ public class LoginController{
     		rs.next();
     		int currentUserId = rs.getInt("USERID");
     		String role = rs.getString("ROLE").trim().toLowerCase();
-			CurrentUser.getCurrentUser().setRole(role);
+
+    		System.out.println(role);
     		if(role.equals("doctor")) {
     			ResultSet currentUserRs = Database.getResults("select * from [USER] join [DOCTOR] on "
     					+ "[USER].USERID = [DOCTOR].USERID where [DOCTOR].USERID = " + currentUserId);
