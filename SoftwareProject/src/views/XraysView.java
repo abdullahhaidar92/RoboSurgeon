@@ -10,4 +10,7 @@ public class XraysView extends VBox {
         operationDashboard=dashboard;
         getStyleClass().add("xrays");
     }
+    public void setError(String message){
+
+    }
 }

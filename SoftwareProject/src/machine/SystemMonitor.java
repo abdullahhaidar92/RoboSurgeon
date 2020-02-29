@@ -1,5 +1,6 @@
 package machine;
 
+import controllers.OperationController;
 import utility.Dates;
 import java.util.Date;
 
@@ -26,6 +27,7 @@ public class SystemMonitor extends CommandHandler {
             machine.getBottomCoil().setCurrent(MAX_CURRENT);
             flag = false;
         }
+        OperationController.setMoveError("System Monitor : Adjusting current value of the coils");
         return getSuccessor().moveUp(value) && flag;
 
     }
@@ -41,6 +43,7 @@ public class SystemMonitor extends CommandHandler {
             machine.getBottomCoil().setCurrent(MAX_CURRENT);
             flag = false;
         }
+        OperationController.setMoveError("System Monitor : Adjusting current value of the coils");
         return getSuccessor().moveDown(value) && flag;
     }
 
@@ -55,6 +58,7 @@ public class SystemMonitor extends CommandHandler {
             machine.getRightCoil().setCurrent(MAX_CURRENT);
             flag = false;
         }
+        OperationController.setMoveError("System Monitor : Adjusting current value of the coils");
         return getSuccessor().moveRight(value) && flag;
     }
 
@@ -86,10 +90,14 @@ public class SystemMonitor extends CommandHandler {
 
     @Override
     public boolean startEmission() {
-        if(radiationLevel >= SAFE_RADIATION_QUANTITY)
+        if(radiationLevel >= SAFE_RADIATION_QUANTITY) {
+            OperationController.setEmissionError("System Monitor : Maximum quantity of radiation already reached");
             return false;
-        if(radiationQuantity + radiationLevel*radiationDuration > SAFE_RADIATION_QUANTITY)
+        }
+        if(radiationQuantity + radiationLevel*radiationDuration > SAFE_RADIATION_QUANTITY) {
+            OperationController.setEmissionError("System Monitor : Radiation will exceed the allowed quantity");
             return false;
+        }
 
         startEmissionTime=new Date();
         return getSuccessor().startEmission();
@@ -108,6 +116,7 @@ public class SystemMonitor extends CommandHandler {
         if (timeDiff > 200) {
             return getSuccessor().startXRay();
         }
+        OperationController.setXrayError("System Monitor : XRay must be off for al least 0.2 seconds");
         return false;
     }
 

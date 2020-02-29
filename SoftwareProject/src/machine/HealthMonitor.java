@@ -1,25 +1,37 @@
 package machine;
 
-public class HealthMonitor extends CommandHandler {
+import controllers.OperationController;
+
+public class HealthMonitor extends CommandHandler implements Runnable{
+
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(2000);
+            OperationController.setDanger(OperationController.Danger.PULSE);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public boolean moveUp(double value) {
-        return false;
+        return getSuccessor().moveUp(value);
     }
 
     @Override
     public boolean moveDown(double value) {
-        return false;
+        return getSuccessor().moveDown(value);
     }
 
     @Override
     public boolean moveRight(double value) {
-        return false;
+        return getSuccessor().moveRight(value);
     }
 
     @Override
     public boolean moveLeft(double value) {
-        return false;
+        return getSuccessor().moveLeft(value);
     }
 
     @Override
@@ -51,4 +63,6 @@ public class HealthMonitor extends CommandHandler {
     public boolean stopXRay() {
         return false;
     }
+
+
 }

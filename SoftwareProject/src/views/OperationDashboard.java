@@ -4,6 +4,8 @@ import components.Window;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.chart.BubbleChart;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -26,8 +28,9 @@ public class OperationDashboard extends Window {
         pane.setMinWidth(getWidth());
         pane.setPadding(new Insets(0,2,10,0));
 
-        Sensor sensor = new Sensor(monitor.getHeartBeatSignal(), monitor.getBloodPressureSignal(), monitor.getTemperatureSignal(), monitor.getOxygenLevelSignal());
-        sensor.start();
+
+
+
         pane.getStylesheets().add(getClass().getResource("/css/operation.css").toExternalForm());
         setContent(pane);
         pane.getStyleClass().add("root");
@@ -45,7 +48,10 @@ public class OperationDashboard extends Window {
         return seedControl;
     }
 
-    public PatientStateMonitor getMonitor() {
+    public PatientStateMonitor getStateMonitor() {
         return monitor;
     }
+
+
+
 }

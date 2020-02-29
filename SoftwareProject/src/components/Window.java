@@ -17,7 +17,7 @@ public class Window extends Stage {
     private VBox root =new VBox();
 
     private Dashboard dashboard;
-
+    Button close=new Button(" X ");
     public Window(String title, double width, double height){
 
 
@@ -25,7 +25,6 @@ public class Window extends Stage {
         header.setCenter(new HBox(new Label(title)));
         header.getStyleClass().add("header");
         header.setPadding(new Insets(8));
-        Button close=new Button(" X ");
         close.getStyleClass().add("close");
         close.setFocusTraversable(false);
         close.setOnAction(e->{
@@ -54,5 +53,9 @@ public class Window extends Stage {
     }
     public Dashboard getDashboard() {
         return dashboard;
+    }
+
+    public Button getClose() {
+        return close;
     }
 }

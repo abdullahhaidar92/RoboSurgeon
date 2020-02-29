@@ -23,7 +23,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws SQLException, IOException {
-        new OperationDashboard().show();
+        new OperationController();
 /*
         Machine machine =Machine.getMachine();
         machine.start();

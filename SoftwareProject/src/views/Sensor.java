@@ -23,23 +23,25 @@ public class Sensor extends Thread {
     private Signal temperatureSignal;
     private Signal oxygenLevelSignal;
 
+    private boolean on;
 
     @Override
     public void run() {
-       startHeartBeat();
+       startRandoms();
     }
 
     public Sensor(Signal heartPulse,Signal asignal1,Signal abloodPressureSignal,Signal atemperatureSignal){
-        heartPulseSignal=heartPulse;bloodPressureSignal=asignal1;
-
-        temperatureSignal=abloodPressureSignal;oxygenLevelSignal=atemperatureSignal;
+        heartPulseSignal=heartPulse;
+        bloodPressureSignal=asignal1;
+        temperatureSignal=abloodPressureSignal;
+        oxygenLevelSignal=atemperatureSignal;
     }
-    public void startHeartBeat(){
+    public void startRandoms(){
          Random rand=new Random();
          int t=20;
          double y;
 
-        while (true) {
+        while (on) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -74,5 +76,13 @@ public class Sensor extends Thread {
 
     public double getCurrentOxygen() {
         return currentOxygen;
+    }
+
+    public void setON(){
+        on=true;
+    }
+
+    public void setOFF(){
+        on=false;
     }
 }

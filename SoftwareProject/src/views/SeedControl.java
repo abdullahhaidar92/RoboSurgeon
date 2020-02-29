@@ -10,4 +10,7 @@ public class SeedControl extends VBox {
         operationDashboard=dashboard;
         getStyleClass().add("seed_control");
     }
+    public void setError(String message){
+
+    }
 }
