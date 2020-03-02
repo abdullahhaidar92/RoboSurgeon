@@ -4,6 +4,11 @@ import machine.*;
 import views.*;
 import views.OperationDashboard;
 
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class OperationController {
     public enum Danger{PULSE,PRESSURE,OXYGEN,TEMPERATURE};
     private CommandHandler commandHandler;
@@ -28,7 +33,7 @@ public class OperationController {
         xraysView.setError(message);
     }
     public static void setDanger(Danger danger){
-        System.out.println("Hello");
+
         switch (danger){
             case PULSE:patientStateMonitor.getHeartBeatSignal().setColor("Red");break;
             case PRESSURE:patientStateMonitor.getBloodPressureSignal().setColor("Red");break;
@@ -64,8 +69,16 @@ public class OperationController {
         return systemMonitor;
     }
 
-    public OperationController(){
-        operationDashboard=new OperationDashboard();
+    public OperationController() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+        Timestamp timestamp = null;
+        try {
+            timestamp = new Timestamp(dateFormat.parse("2020-09-20 05:40:00.0").getTime());
+            operationDashboard =   new OperationDashboard(2, 1,timestamp);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         emissionControl=operationDashboard.getEmissionControl();
         seedControl=operationDashboard.getSeedControl();
         patientStateMonitor=operationDashboard.getStateMonitor();

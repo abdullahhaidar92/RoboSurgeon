@@ -1,22 +1,33 @@
 package views;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+
 
 import components.Window;
+import controllers.XraysController;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.chart.BubbleChart;
-import javafx.scene.control.Button;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class OperationDashboard extends Window {
- private XraysView xraysView;
- private EmissionControl emissionControl;
- private SeedControl seedControl;
- private PatientStateMonitor monitor;
+import javax.xml.stream.EventFilter;
 
-    public OperationDashboard() {
+public class OperationDashboard extends Window {
+    private XraysView xraysView;
+    private EmissionControl emissionControl;
+    private SeedControl seedControl;
+    private PatientStateMonitor monitor;
+    private int doctorId, patientId;
+    private Timestamp appointmentDate;
+
+    public OperationDashboard(int doctorId, int patientId,Timestamp appointmentDate) throws SQLException{
         super("Operation", 1300,800);
+
+         this.doctorId = doctorId;
+         this.patientId = patientId;
+         this.appointmentDate=appointmentDate;
+
         xraysView=new XraysView(this);
         monitor=new PatientStateMonitor(this);
         emissionControl=new EmissionControl(this);
@@ -29,7 +40,9 @@ public class OperationDashboard extends Window {
         pane.setPadding(new Insets(0,2,10,0));
 
 
-
+         xraysView.setFocusTraversable(true);
+         XraysController x_rayController = new XraysController(xraysView);
+         pane.setOnKeyPressed(x_rayController);
 
         pane.getStylesheets().add(getClass().getResource("/css/operation.css").toExternalForm());
         setContent(pane);
@@ -52,6 +65,15 @@ public class OperationDashboard extends Window {
         return monitor;
     }
 
+    public int getDoctorId() {
+        return doctorId;
+    }
 
+    public int getPatientId() {
+        return patientId;
+    }
 
+    public Timestamp getAppointmentDate() {
+        return appointmentDate;
+    }
 }
