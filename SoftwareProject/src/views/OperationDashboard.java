@@ -24,29 +24,40 @@ public class OperationDashboard extends Window {
     public OperationDashboard(int doctorId, int patientId,Timestamp appointmentDate) throws SQLException{
         super("Operation", 1300,800);
 
-         this.doctorId = doctorId;
-         this.patientId = patientId;
-         this.appointmentDate=appointmentDate;
+        this.doctorId = doctorId;
+        this.patientId = patientId;
+        this.appointmentDate=appointmentDate;
+        xraysView = new XraysView(this);
+        super.setupScene(xraysView);
+        monitor = new PatientStateMonitor(this);
+        emissionControl = new EmissionControl(this);
+        seedControl = new SeedControl(this);
 
-        xraysView=new XraysView(this);
         monitor=new PatientStateMonitor(this);
         emissionControl=new EmissionControl(this);
         seedControl=new SeedControl(this);
-
         HBox box1=new HBox(xraysView,monitor);
         HBox box2=new HBox(emissionControl,seedControl);
         VBox pane = new VBox(box1,box2);
+
+
+
+        XraysController x_rayController = new XraysController(xraysView);
+        pane.setOnKeyPressed(x_rayController);
         pane.setMinWidth(getWidth());
         pane.setPadding(new Insets(0,2,10,0));
 
-
-         xraysView.setFocusTraversable(true);
-         XraysController x_rayController = new XraysController(xraysView);
-         pane.setOnKeyPressed(x_rayController);
-
+        Sensor sensor = new Sensor(monitor.getHeartBeatSignal(), monitor.getBloodPressureSignal(), monitor.getTemperatureSignal(), monitor.getOxygenLevelSignal());
+        sensor.start();
         pane.getStylesheets().add(getClass().getResource("/css/operation.css").toExternalForm());
         setContent(pane);
         pane.getStyleClass().add("root");
+        xraysView.requestFocus();
+
+
+
+
+
     }
 
     public XraysView getXraysView() {

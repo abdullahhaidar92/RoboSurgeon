@@ -54,6 +54,9 @@ public class XraysView extends VBox {
         this.getChildren().addAll(coordinates, stackPane);
         this.setAlignment(Pos.TOP_CENTER);
         getStyleClass().add("xrays");
+        this.setOnMouseEntered(e -> {
+            this.requestFocus();
+        });
     }
     public void init(){
         Random rand = new Random();
@@ -203,4 +206,5 @@ public class XraysView extends VBox {
     public void setError(String message){
 
     }
+
 }

@@ -1,5 +1,6 @@
 package components;
 
+import controllers.XraysController;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -11,12 +12,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import views.XraysView;
 
 public class Window extends Stage {
 
     private VBox root =new VBox();
-
+    private Scene scene;
     private Dashboard dashboard;
+
+
     Button close=new Button(" X ");
     public Window(String title, double width, double height){
 
@@ -35,7 +39,7 @@ public class Window extends Stage {
         header.setRight(close);
 
        root.getChildren().add(header);
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         setScene(scene);
         setWidth(width);
         setHeight(height);
@@ -57,5 +61,10 @@ public class Window extends Stage {
 
     public Button getClose() {
         return close;
+    }
+
+    public void setupScene(XraysView view) {
+        XraysController x_rayController = new XraysController(view);
+        scene.setOnKeyPressed(x_rayController);
     }
 }

@@ -93,7 +93,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -281,26 +281,26 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="467" y="154" width="524" height="484" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/67.27.1299.741@67.27.1299.741" timestamp="1580322902295" />
-    <state x="517" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1583144690888">
+    <state x="517" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1583149084649">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="517" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1583144690888" />
-    <state width="1253" height="2" key="GridCell.Tab.0.bottom" timestamp="1583147660578">
+    <state x="517" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1583149084649" />
+    <state width="1253" height="2" key="GridCell.Tab.0.bottom" timestamp="1583150657164">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="2" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1583147660578" />
-    <state width="1253" height="2" key="GridCell.Tab.0.center" timestamp="1583147660577">
+    <state width="1253" height="2" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1583150657164" />
+    <state width="1253" height="2" key="GridCell.Tab.0.center" timestamp="1583150657163">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="2" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1583147660577" />
-    <state width="1253" height="2" key="GridCell.Tab.0.left" timestamp="1583147660577">
+    <state width="1253" height="2" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1583150657163" />
+    <state width="1253" height="2" key="GridCell.Tab.0.left" timestamp="1583150657162">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="2" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1583147660577" />
-    <state width="1253" height="2" key="GridCell.Tab.0.right" timestamp="1583147660578">
+    <state width="1253" height="2" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1583150657162" />
+    <state width="1253" height="2" key="GridCell.Tab.0.right" timestamp="1583150657164">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="2" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1583147660578" />
+    <state width="1253" height="2" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1583150657164" />
     <state width="1253" height="219" key="GridCell.Tab.1.bottom" timestamp="1582908991380">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -321,10 +321,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="199" y="27" width="1024" height="741" key="SettingsEditor/67.27.1299.741@67.27.1299.741" timestamp="1580399855836" />
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1583144647203">
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1583149026387">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1583144647203" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1583149026387" />
     <state x="388" y="292" width="636" height="224" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1580399984216">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
