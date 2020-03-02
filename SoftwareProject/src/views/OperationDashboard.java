@@ -32,15 +32,20 @@ public class OperationDashboard extends Window {
         this.patientId = patientId;
         this.appointmentDate=appointmentDate;
         xraysView = new XraysView(this);
+        super.setupScene(xraysView);
         monitor = new PatientStateMonitor(this);
         emissionControl = new EmissionControl(this);
         seedControl = new SeedControl(this);
 
-        HBox box1 = new HBox(xraysView,monitor);
-        HBox box2 = new HBox(emissionControl,seedControl);
+        monitor=new PatientStateMonitor(this);
+        emissionControl=new EmissionControl(this);
+        seedControl=new SeedControl(this);
+        HBox box1=new HBox(xraysView,monitor);
+        HBox box2=new HBox(emissionControl,seedControl);
         VBox pane = new VBox(box1,box2);
 
-        xraysView.setFocusTraversable(true);
+
+
         XraysController x_rayController = new XraysController(xraysView);
         pane.setOnKeyPressed(x_rayController);
         pane.setMinWidth(getWidth());
@@ -51,6 +56,7 @@ public class OperationDashboard extends Window {
         pane.getStylesheets().add(getClass().getResource("/css/operation.css").toExternalForm());
         setContent(pane);
         pane.getStyleClass().add("root");
+        xraysView.requestFocus();
     }
 
     public XraysView getXraysView() {
