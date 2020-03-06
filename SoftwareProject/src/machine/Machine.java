@@ -10,6 +10,9 @@ public class Machine extends CommandHandler {
     private static Seed seed;
     private static XRay xRay;
     private static Machine machine;
+    private static int emissionDuration;
+    private double totalMagnitude=100;
+    private MultiVersionEnvironment environment;
 
     public static Machine getMachine() {
         if (machine == null)
@@ -24,9 +27,14 @@ public class Machine extends CommandHandler {
         bottomCoil = new Coil();
         seed = Seed.getSeed();
         seed.setCoils(leftCoil, rightCoil, topCoil, bottomCoil);
-        leftCoil.setXPos(0);
-        rightCoil.setXPos(100);
-        xRay=new XRay();
+        xRay=XRay.getXRay();
+
+        leftCoil.setMagnitude(SAFE_RADIATION_LEVEL);
+        rightCoil.setMagnitude(0);
+        topCoil.setMagnitude(SAFE_RADIATION_LEVEL);
+        bottomCoil.setMagnitude(0);
+
+        environment=MultiVersionEnvironment.getEnvironment();
     }
 
 
@@ -49,11 +57,10 @@ public class Machine extends CommandHandler {
 
     public Coil getLeftCoil() {  return leftCoil; }
 
-    public static Coil getRightCoil() {
+    public Coil getRightCoil() {
         return rightCoil;
     }
-
-
+    public Coil getTopCoil() {  return topCoil;   }
     public Coil getBottomCoil() {
         return bottomCoil;
     }
@@ -77,96 +84,91 @@ public class Machine extends CommandHandler {
 
     @Override
     public boolean moveUp(double value) {
-        MoveStrategy strategy=getMoveStrategy();
-        double newY=Machine.getMachine().getSeed().getyPos()-value/getInnerWidth();
-        if(newY<0)
+        double y=Machine.getMachine().getSeed().getyPos()-value/getInnerHeight();
+        if(y<0)
             return false;
-        strategy.setCoilMagnitudes(topCoil.getMagnitude(),bottomCoil.getMagnitude(),rightCoil.getMagnitude(),leftCoil.getMagnitude());
-        strategy.moveUp(newY);
-        double topM=strategy.getTopCoilMagnitude();
-        double bottomM=strategy.getBottomCoilMagnitude();
-        DecimalFormat format=new DecimalFormat("##.00");
+        double x=Seed.getSeed().getxPos();
+        move(x,y);
+        return true;
+    }
+
+    private void move(double x,double y){
+        System.out.println("X : "+x + " Y : "+y);
+        environment.initialze();
+        double[] magnitudes = environment.compute(new double[]{x,y,totalMagnitude});
+        double topM=magnitudes[0];
+        double bottomM=magnitudes[1];
+        double leftM=magnitudes[2];
+        double rightM=magnitudes[3];
+       /* DecimalFormat format=new DecimalFormat("##.00");
         topM=Double.valueOf(format.format(topM));
         bottomM=Double.valueOf(format.format(bottomM));
+        leftM=Double.valueOf(format.format(leftM));
+        rightM=Double.valueOf(format.format(rightM));
+
+        */
+        System.out.println(topM);
+        System.out.println(bottomM);
+        System.out.println(leftM);
+        System.out.println(rightM);
+
         setTopCoilMagnitude(topM);
         setBottomCoilMagnitude(bottomM);
-        return true;
+        setLeftCoilMagnitude(leftM);
+        setRightCoilMagnitude(rightM);
     }
 
     @Override
     public boolean moveDown(double value) {
-        MoveStrategy strategy=getMoveStrategy();
-        double newY=Machine.getMachine().getSeed().getyPos()+value/getInnerWidth();
-        if(newY >1)
+        double y=Machine.getMachine().getSeed().getyPos()+value/getInnerHeight();
+        if(y>1)
             return false;
-        strategy.setCoilMagnitudes(topCoil.getMagnitude(),bottomCoil.getMagnitude(),rightCoil.getMagnitude(),leftCoil.getMagnitude());
-        strategy.moveDown(newY);
-        double topM=strategy.getTopCoilMagnitude();
-        double bottomM=strategy.getBottomCoilMagnitude();
-        DecimalFormat format=new DecimalFormat("##.00");
-        topM=Double.valueOf(format.format(topM));
-        bottomM=Double.valueOf(format.format(bottomM));
-        setTopCoilMagnitude(topM);
-        setBottomCoilMagnitude(bottomM);
+        double x=Seed.getSeed().getxPos();
+        move(x,y);
         return true;
     }
 
     @Override
     public boolean moveRight(double value) {
-
-        MoveStrategy strategy=getMoveStrategy();
-        double newX=Machine.getMachine().getSeed().getxPos()+value/getInnerWidth();
-        if(newX>1)
+        double x=Machine.getMachine().getSeed().getxPos()+value/getInnerWidth();
+        if(x>1)
             return false;
-
-        strategy.setCoilMagnitudes(topCoil.getMagnitude(),bottomCoil.getMagnitude(),rightCoil.getMagnitude(),leftCoil.getMagnitude());
-        strategy.moveRight(newX);
-        double leftM=strategy.getLeftCoilMagnitude();
-        double rightM=strategy.getRightCoilMagnitude();
-        DecimalFormat format=new DecimalFormat("##.00");
-        leftM=Double.valueOf(format.format(leftM));
-        rightM=Double.valueOf(format.format(rightM));
-        setLeftCoilMagnitude(leftM);
-        setRightCoilMagnitude(rightM);
-        return false;
+        double y=Seed.getSeed().getyPos();
+        move(x,y);
+        return true;
     }
 
     @Override
     public boolean moveLeft(double value) {
-        MoveStrategy strategy=getMoveStrategy();
-        double newX=Machine.getMachine().getSeed().getxPos()-value/getInnerWidth();
-        if (newX < 0)
+        double x=Machine.getMachine().getSeed().getxPos()-value/getInnerWidth();
+        if(x>1)
             return false;
-        strategy.setCoilMagnitudes(topCoil.getMagnitude(),bottomCoil.getMagnitude(),rightCoil.getMagnitude(),leftCoil.getMagnitude());
-        strategy.moveLeft(newX);
-        double leftM=strategy.getLeftCoilMagnitude();
-        double rightM=strategy.getRightCoilMagnitude();
-        DecimalFormat format=new DecimalFormat("##.00");
-        leftM=Double.valueOf(format.format(leftM));
-        rightM=Double.valueOf(format.format(rightM));
-        setLeftCoilMagnitude(leftM);
-        setRightCoilMagnitude(rightM);
-        return false;
+        double y=Seed.getSeed().getyPos();
+        move(x,y);
+        return true;
     }
 
     @Override
     public boolean setRadiation(double value) {
-        seed.setRadiation(value);return true;
+        seed.setRadiation(value);
+        return true;
     }
 
     @Override
-    public boolean setEmissionDuration(double value) {
-        return false;
+    public boolean setEmissionDuration(int value) {
+
+        emissionDuration=value;
+        return true;
     }
 
     @Override
     public boolean startEmission() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean stopEmission() {
-        return false;
+        return true;
     }
 
     @Override
@@ -181,11 +183,14 @@ public class Machine extends CommandHandler {
          return true;
     }
 
-    public static Coil getTopCoil() {
-        return topCoil;
-    }
+
 
     public static XRay getXRay() {
         return xRay;
+    }
+
+
+    public static int getEmissionDuration() {
+        return emissionDuration;
     }
 }

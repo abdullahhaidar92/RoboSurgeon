@@ -11,14 +11,16 @@ public class OperationDashboardModel extends DashboardModel {
 
 	public boolean create(Operation o)  {
 		try {
-			String sql = "insert into OPERATION(DOCTORID,PATIENTID,APPOINTMENTDATE,MACHINEID,SURGERYID,REGISTERATIONDATE) values(?,?,?,?,?,?)";
+			String sql = "insert into OPERATION(DOCTORID,PATIENTID,APPOINTMENTDATE,MACHINEID,SURGERYID,MAXRADIATION,MAXTIMER,REGISTERATIONDATE) values(?,?,?,?,?,?,?,?)";
 			PreparedStatement P = Database.getConnection().prepareStatement(sql);
 			P.setInt(1, getCurrentDocotorId());
 			P.setInt(2, o.getPatientId());
 			P.setTimestamp(3, Timestamp.valueOf(o.getAppointmentDate()));
 			P.setInt(4, o.getMachineId());
 			P.setInt(5, o.getSurgeryId());
-			P.setTimestamp(6, o.getRegistrationDate());
+			P.setInt(6, o.getMaxRadiationVal());
+			P.setInt(7, o.getMaxTimerVal());
+			P.setTimestamp(8, o.getRegistrationDate());
 			P.execute();
 			return true;
 		}
@@ -29,15 +31,16 @@ public class OperationDashboardModel extends DashboardModel {
 	}
 	public boolean update(Operation o)  {
 		try {
-			String sql = "update OPERATION set MACHINEID=?,SURGERYID=? , REGISTERATIONDATE=?  where DOCTORID= ? and PATIENTID =? and APPOINTMENTDATE=? ";
+			String sql = "update OPERATION set MACHINEID=?,SURGERYID=? ,MAXRADIATION=?, MAXTIMER=?, REGISTERATIONDATE=?  where DOCTORID= ? and PATIENTID =? and APPOINTMENTDATE=? ";
 			PreparedStatement P = Database.getConnection().prepareStatement(sql);
 			P.setInt(1, o.getMachineId());
 			P.setInt(2, o.getSurgeryId());
-			P.setTimestamp(3, o.getRegistrationDate());
-			P.setInt(4, getCurrentDocotorId());
-			P.setInt(5, o.getPatientId());
-			P.setTimestamp(6, Timestamp.valueOf(o.getAppointmentDate()));
-
+			P.setInt(3, o.getMaxRadiationVal());
+			P.setInt(4, o.getMaxTimerVal());
+			P.setTimestamp(5, o.getRegistrationDate());
+			P.setInt(6, getCurrentDocotorId());
+			P.setInt(7, o.getPatientId());
+			P.setTimestamp(8, Timestamp.valueOf(o.getAppointmentDate()));
 			P.execute();
 			return true;
 		}
@@ -146,7 +149,8 @@ public class OperationDashboardModel extends DashboardModel {
                     		rs.getTimestamp("REGISTERATIONDATE"), rs.getTimestamp("STARTTIME"), 
                     		rs.getTimestamp("ENDTIME"), rs.getString("NAME").trim(), rs.getString("DESCRIPTION").trim(),
                     		rs.getString("DURATION").trim());
-                    
+					o.setMaxRadiationVal(rs.getInt("MAXRADIATION"));
+					o.setMaxTimerVal(rs.getInt("MAXTIMER"));
                     operations.add(o);
                 }
             	

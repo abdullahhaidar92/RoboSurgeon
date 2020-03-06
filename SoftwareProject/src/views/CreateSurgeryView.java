@@ -1,6 +1,7 @@
 package views;
 
 import application.Database;
+import components.NumberField;
 import components.TimeField;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -18,12 +19,14 @@ public class CreateSurgeryView extends GridPane {
     private DatePicker datePicker;
     private TimeField timeField;
     private Stage parentStage;
+    private NumberField timerVal, radiationVal;
+
 public CreateSurgeryView( ArrayList<String> patients,ArrayList<String> surgeries, ArrayList<String> machines){
     int x=0,y=0,width=220;
     setHgap(20);
     setVgap(10);
     setPadding(new Insets(30,30,30,30));
-    Label[] names=new Label[6],values=new Label[9];
+    Label[] names=new Label[8],values=new Label[11];
 
     names[y]=new Label("Patient ");
     names[y].getStyleClass().add("name");
@@ -60,6 +63,21 @@ public CreateSurgeryView( ArrayList<String> patients,ArrayList<String> surgeries
     timeField=new TimeField();
     timeField.setPrefWidth(200);
     addRow(y,names[y],timeField);
+
+
+    names[++y]=new Label("Safe Emission Duration");
+    names[y].getStyleClass().add("name");
+    timerVal = new NumberField();
+    timerVal.setPrefWidth(200);
+    addRow(y,names[y], timerVal);
+
+    names[++y]=new Label("Safe Radiation Value");
+    names[y].getStyleClass().add("name");
+    radiationVal = new NumberField();
+    radiationVal.setPrefWidth(200);
+    addRow(y,names[y], radiationVal);
+
+
 
     addRow(++y,new Label(" "));
     save =new Button(" Save ");
@@ -118,4 +136,11 @@ public CreateSurgeryView( ArrayList<String> patients,ArrayList<String> surgeries
         return parentStage;
     }
 
+    public TextField getTimerVal() {
+        return timerVal;
+    }
+
+    public TextField getRadiationVal() {
+        return radiationVal;
+    }
 }

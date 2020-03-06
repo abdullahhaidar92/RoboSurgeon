@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import models.Assistant;
 import views.AssistantCreateView.DoctorCombo;
@@ -177,7 +178,7 @@ public class AssistantCreateView extends GridPane {
         	  
            while ( rs.next() ) 
            { 
-        	  DoctorCombo dc = new DoctorCombo(rs.getString("FIRSTNAME"),rs.getString("LASTNAME"),rs.getInt("DoctorId"));
+        	  DoctorCombo dc = new DoctorCombo(rs.getString("FIRSTNAME").trim(),rs.getString("LASTNAME").trim(),rs.getInt("DoctorId"));
         	
         	  listacombo.add(dc);
             } 
@@ -197,7 +198,11 @@ public class AssistantCreateView extends GridPane {
         ComboBox<String> contracttype = new ComboBox<String>();
         contracttype.getItems().addAll("FULL TIME", "PART TIME");             
         grid.add(contracttype, 1,13);
-        
+
+        contracttype.setMinWidth(210);
+        doctor.setMinWidth(210);
+        bloodType.setMinWidth(210);
+        birthDateField.setMinWidth(210);
         firstNameField.textProperty().addListener((Observer, oldValue, newValue) ->
        {
     	   
@@ -220,7 +225,8 @@ public class AssistantCreateView extends GridPane {
         // Add create button
         Button createBtn = new Button("Add Assistant");
         GridPane.setHalignment(createBtn, HPos.CENTER);
-        grid.add(createBtn, 0,14);
+        createBtn.getStyleClass().add("edit");
+
         createBtn.setOnAction(e->{ 
         	if( Validation.validateConfirmPassword(passwordField, confirmPasswordField)  &&
         		Validation.validateString(firstNameField,"First Name") &&
@@ -261,14 +267,17 @@ public class AssistantCreateView extends GridPane {
         
         Button close =new Button("Close");
         GridPane.setHalignment(close, HPos.RIGHT);
-        grid.add(close, 2,14);
-        
+       close.getStyleClass().add("cancel");
+       HBox box=new HBox(close,createBtn);
+       box.setSpacing(20);
+       box.setPadding(new Insets(10,0,0,0));
+        grid.addRow(14,new Label(" "),box);
         close.setOnAction(e->{ 
            Stage stage = (Stage) this.getScene().getWindow();
            stage.close();
           
-        });      
-      
+        });
+        grid.getStylesheets().add(getClass().getResource("/css/edit.css").toExternalForm());
      }
     
     public void setParent(Stage parentStage) {

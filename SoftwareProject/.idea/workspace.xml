@@ -56,8 +56,8 @@
       <list>
         <option value="module-info" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -93,7 +93,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/versions" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -104,18 +104,18 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="application" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="components" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/versions" />
+      <recent name="$PROJECT_DIR$/src/views" />
       <recent name="$PROJECT_DIR$/src/controllers" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/css" />
-      <recent name="$PROJECT_DIR$/src/views" />
-      <recent name="$PROJECT_DIR$/src/models" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -273,58 +273,58 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="398" y="201" width="626" height="390" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1299.741@67.27.1299.741" timestamp="1580596442836" />
-    <state x="524" y="109" width="374" height="575" key="#com.intellij.ide.util.MemberChooser" timestamp="1583145747049">
+    <state x="524" y="109" width="374" height="575" key="#com.intellij.ide.util.MemberChooser" timestamp="1583531714511">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="524" y="109" width="374" height="575" key="#com.intellij.ide.util.MemberChooser/67.27.1299.741@67.27.1299.741" timestamp="1583145747049" />
+    <state x="524" y="109" width="374" height="575" key="#com.intellij.ide.util.MemberChooser/67.27.1299.741@67.27.1299.741" timestamp="1583531714511" />
     <state x="467" y="154" width="524" height="484" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1580322902295">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="467" y="154" width="524" height="484" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/67.27.1299.741@67.27.1299.741" timestamp="1580322902295" />
-    <state x="517" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1583149084649">
+    <state x="517" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1583414186334">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="517" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1583149084649" />
-    <state width="1253" height="2" key="GridCell.Tab.0.bottom" timestamp="1583150657164">
+    <state x="517" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1583414186334" />
+    <state width="1253" height="2" key="GridCell.Tab.0.bottom" timestamp="1583534919405">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="2" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1583150657164" />
-    <state width="1253" height="2" key="GridCell.Tab.0.center" timestamp="1583150657163">
+    <state width="1253" height="2" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1583534919405" />
+    <state width="1253" height="2" key="GridCell.Tab.0.center" timestamp="1583534919404">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="2" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1583150657163" />
-    <state width="1253" height="2" key="GridCell.Tab.0.left" timestamp="1583150657162">
+    <state width="1253" height="2" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1583534919404" />
+    <state width="1253" height="2" key="GridCell.Tab.0.left" timestamp="1583534919404">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="2" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1583150657162" />
-    <state width="1253" height="2" key="GridCell.Tab.0.right" timestamp="1583150657164">
+    <state width="1253" height="2" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1583534919404" />
+    <state width="1253" height="2" key="GridCell.Tab.0.right" timestamp="1583534919404">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="2" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1583150657164" />
-    <state width="1253" height="219" key="GridCell.Tab.1.bottom" timestamp="1582908991380">
+    <state width="1253" height="2" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1583534919404" />
+    <state width="1253" height="2" key="GridCell.Tab.1.bottom" timestamp="1583504374916">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="219" key="GridCell.Tab.1.bottom/67.27.1299.741@67.27.1299.741" timestamp="1582908991380" />
-    <state width="1253" height="219" key="GridCell.Tab.1.center" timestamp="1582908991379">
+    <state width="1253" height="2" key="GridCell.Tab.1.bottom/67.27.1299.741@67.27.1299.741" timestamp="1583504374916" />
+    <state width="1253" height="2" key="GridCell.Tab.1.center" timestamp="1583504374915">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="219" key="GridCell.Tab.1.center/67.27.1299.741@67.27.1299.741" timestamp="1582908991379" />
-    <state width="1253" height="219" key="GridCell.Tab.1.left" timestamp="1582908991379">
+    <state width="1253" height="2" key="GridCell.Tab.1.center/67.27.1299.741@67.27.1299.741" timestamp="1583504374915" />
+    <state width="1253" height="2" key="GridCell.Tab.1.left" timestamp="1583504374915">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="219" key="GridCell.Tab.1.left/67.27.1299.741@67.27.1299.741" timestamp="1582908991379" />
-    <state width="1253" height="219" key="GridCell.Tab.1.right" timestamp="1582908991379">
+    <state width="1253" height="2" key="GridCell.Tab.1.left/67.27.1299.741@67.27.1299.741" timestamp="1583504374915" />
+    <state width="1253" height="2" key="GridCell.Tab.1.right" timestamp="1583504374915">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="219" key="GridCell.Tab.1.right/67.27.1299.741@67.27.1299.741" timestamp="1582908991379" />
+    <state width="1253" height="2" key="GridCell.Tab.1.right/67.27.1299.741@67.27.1299.741" timestamp="1583504374915" />
     <state x="199" y="27" width="1024" height="741" key="SettingsEditor" timestamp="1580399855836">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="199" y="27" width="1024" height="741" key="SettingsEditor/67.27.1299.741@67.27.1299.741" timestamp="1580399855836" />
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1583149026387">
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1583534102072">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1583149026387" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1583534102072" />
     <state x="388" y="292" width="636" height="224" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1580399984216">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -337,10 +337,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="547" y="45" width="442" height="590" key="com.intellij.testIntegration.createTest.CreateTestDialog/67.27.1299.741@67.27.1299.741" timestamp="1580402336614" />
-    <state x="380" y="175" key="run.anything.popup" timestamp="1582906273838">
+    <state x="380" y="175" key="run.anything.popup" timestamp="1583245723128">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="380" y="175" key="run.anything.popup/67.27.1299.741@67.27.1299.741" timestamp="1582906273838" />
+    <state x="380" y="175" key="run.anything.popup/67.27.1299.741@67.27.1299.741" timestamp="1583245723128" />
     <state x="379" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1582869278900">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -351,12 +351,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/models/OperationDashboardModel.java</url>
-          <line>64</line>
+          <line>67</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/models/OperationDashboardModel.java</url>
-          <line>121</line>
+          <line>124</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -366,22 +366,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/models/OperationDashboardModel.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/models/OperationDashboardModel.java</url>
-          <line>49</line>
+          <line>52</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controllers/OperationDashboard.java</url>
-          <line>160</line>
+          <line>161</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controllers/OperationDashboard.java</url>
-          <line>89</line>
+          <line>90</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -391,7 +386,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/models/OperationDashboardModel.java</url>
-          <line>120</line>
+          <line>123</line>
           <properties class="models.OperationDashboardModel" method="loadFromResultSet">
             <option name="EMULATED" value="true" />
           </properties>
@@ -412,6 +407,22 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/views/Sensor.java</url>
+          <line>47</line>
+          <properties class="views.Sensor" method="startRandoms">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/controllers/OperationController.java</url>
+          <line>80</line>
+          <properties class="controllers.OperationController" method="getCommandHandler">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

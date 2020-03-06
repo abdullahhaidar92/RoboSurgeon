@@ -24,17 +24,26 @@ public class Sensor extends Thread {
     private Signal oxygenLevelSignal;
 
     private boolean on;
+    private double[] chartValues=new double[4];
+    private int time;
+
+    public static Sensor sensor;
 
     @Override
     public void run() {
        startRandoms();
     }
 
-    public Sensor(Signal heartPulse,Signal asignal1,Signal abloodPressureSignal,Signal atemperatureSignal){
+    private Sensor(Signal heartPulse,Signal abloodPressureSignal,Signal atemperatureSignal, Signal aOxygenLevel){
         heartPulseSignal=heartPulse;
-        bloodPressureSignal=asignal1;
-        temperatureSignal=abloodPressureSignal;
-        oxygenLevelSignal=atemperatureSignal;
+        bloodPressureSignal=abloodPressureSignal;
+        temperatureSignal=atemperatureSignal;
+        oxygenLevelSignal=aOxygenLevel;
+
+        heartPulse.setSensor(this);
+        bloodPressureSignal.setSensor(this);
+        temperatureSignal.setSensor(this);
+        oxygenLevelSignal.setSensor(this);
     }
     public void startRandoms(){
          Random rand=new Random();
@@ -55,11 +64,21 @@ public class Sensor extends Thread {
             currentPressure=(y/1.5)*(MAX_PRESSURE-MIN_PRESSURE)+MIN_PRESSURE;
             currentTemperature=(y/1.5)*(MAX_TEMPERATURE-MIN_TEMPERATURE)+MIN_TEMPERATURE;
             currentOxygen=(y/1.5)*(MAX_OXYGEN-MIN_OXYGEN)+MIN_OXYGEN;
-            heartPulseSignal.add(t,y);
-            bloodPressureSignal.add(t,y);
-            temperatureSignal.add(t,y);
-            oxygenLevelSignal.add(t,y);
+            chartValues[0]=y;
+            chartValues[1]=y;
+            chartValues[2]=y;
+            chartValues[3]=y;
+            time=t;
+            notifySignals();
+
         }
+    }
+
+    public void notifySignals(){
+        heartPulseSignal.update();
+        bloodPressureSignal.update();
+                temperatureSignal.update();
+        oxygenLevelSignal.update();
     }
 
     public double getCurrentPulse() {
@@ -85,4 +104,29 @@ public class Sensor extends Thread {
     public void setOFF(){
         on=false;
     }
+
+    public double getChartValue(String type){
+        switch (type){
+            case "pulse":return chartValues[0];
+            case "pressure":return chartValues[1];
+            case "temperature":return chartValues[2];
+            case "oxygen":return chartValues[3];
+        }
+        return 0;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public static Sensor getSensor(Signal heartPulse,Signal abloodPressureSignal,Signal atemperatureSignal,Signal aOxygenLevel){
+        if(sensor==null)
+            sensor =new Sensor(heartPulse,abloodPressureSignal,atemperatureSignal,aOxygenLevel);
+        return sensor;
+    }
+
+    public static Sensor getSensor(){
+        return sensor;
+    }
+
 }

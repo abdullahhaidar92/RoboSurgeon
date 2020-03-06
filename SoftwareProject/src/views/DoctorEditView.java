@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import models.Doctor;
 
@@ -151,8 +152,12 @@ public class DoctorEditView extends GridPane {
         // Add create button
         Button editBtn = new Button("Edit Doctor");
         GridPane.setHalignment(editBtn, HPos.CENTER);
-        grid.add(editBtn, 0,14);
-        editBtn.setOnAction(e->{ 
+        HBox box=new HBox();
+        grid.add(box, 1,14);
+        box.setSpacing(20);
+        editBtn.getStyleClass().add("edit");
+
+        editBtn.setOnAction(e->{
         	if(
         		Validation.validateString(firstNameField,"First Name") &&
         		Validation.validateString(middleNameField,"Middle Name") &&
@@ -188,17 +193,18 @@ public class DoctorEditView extends GridPane {
         	
         });
         
-        Button close =new Button("Close");
+        Button close =new Button("Cancel");
         GridPane.setHalignment(close, HPos.RIGHT);
-        grid.add(close, 2,14);
+
+        close.getStyleClass().add("cancel");
         close.setOnAction(e->{ 
            Stage stage = (Stage) this.getScene().getWindow();
            stage.close();
           
         });
-        
-        
-        
+        box.getChildren().addAll(close,editBtn);
+
+        getStylesheets().add(getClass().getResource("/css/edit.css").toExternalForm());
 
     }
     public void setParent(Stage parentStage) {

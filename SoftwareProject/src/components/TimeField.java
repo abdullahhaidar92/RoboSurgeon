@@ -8,8 +8,8 @@ import javafx.scene.layout.HBox;
 
 public class TimeField extends HBox {
 
-    private NumFieldFX hours=new NumFieldFX();
-    private NumFieldFX minutes=new NumFieldFX();
+    private NumberField hours=new NumberField();
+    private NumberField minutes=new NumberField();
     private Label label=new Label(" : ");
     public TimeField(){
         getChildren().addAll(hours,label,minutes);
@@ -30,16 +30,5 @@ public class TimeField extends HBox {
     public void setMinutes(int m){
         minutes.setText(""+m);
     }
-    private class NumFieldFX extends TextField {
-        public NumFieldFX() {
-            this.addEventFilter(KeyEvent.KEY_TYPED, t -> {
-                char ar[] = t.getCharacter().toCharArray();
-                char ch = ar[t.getCharacter().toCharArray().length - 1];
-                if (!(ch >= '0' && ch <= '9')) {
-                    System.out.println("The char you entered is not a number");
-                    t.consume();
-                }
-            });
-        }
-    }
+
 }

@@ -9,47 +9,67 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import application.Database;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-    public class SeedControl extends GridPane {
+public class SeedControl extends VBox {
         OperationDashboard operationDashboard;
         TextField stepX, stepY;
         public SeedControl(OperationDashboard dashboard) throws SQLException{
-            setMinWidth(dashboard.getWidth()*0.4);
-            setMinHeight(dashboard.getHeight()*0.2);
+            setMinWidth(dashboard.getWidth()*0.42);
+            setMinHeight(dashboard.getHeight()*0.12);
             operationDashboard=dashboard;
             getStyleClass().add("seed_control");
 
-
-            this.setPadding(new Insets(10, 10, 10, 10));
-            this.setVgap(5);
-            this.setHgap(5);
+            HBox boxX=new HBox(),boxY=new HBox();
+            Label label=new Label("Seed Control");
+            label.getStyleClass().add("labelTitle");
+            HBox title=new HBox(label);
+            title.getStyleClass().add("title");
+            HBox box2=new HBox(boxX,boxY);
+            HBox box1=new HBox();
+            getChildren().addAll(title,box1,box2);
+            setSpacing(7);
+            box1.setSpacing(20);
+            box2.setSpacing(55);
+            
+            
+            
+            
 
             int[] maxValues = getMaxFields();
 
 
             Label maxRadiationLabel = new Label("Maximum Radiation");
             Label maxRadiationValueLabel = new Label(String.valueOf(maxValues[0]));
-            this.add(maxRadiationLabel, 0, 0);
-            this.add(maxRadiationValueLabel, 1, 0);
+            box1.getChildren().add(maxRadiationLabel);
+            box1.getChildren().add(maxRadiationValueLabel);
 
-            Label maxTimerLabel = new Label("Maximum Timer Duration");
+            Label maxTimerLabel = new Label("Maximum Emission Duration");
             Label maxTimerValueLabel = new Label(String.valueOf(maxValues[1]));
-            this.add(maxTimerLabel, 0, 1);
-            this.add(maxTimerValueLabel, 1, 1);
+            box1.getChildren().add(maxTimerLabel);
+            box1.getChildren().add(maxTimerValueLabel);
+            maxRadiationValueLabel.getStyleClass().add("value");
+            maxTimerValueLabel.getStyleClass().add("value");
 
 
-            Label stepXLabel = new Label("Step X");
-            stepX = new TextField();
-            this.add(stepXLabel, 0, 2);
-            this.add(stepX, 1, 2);
+            Label stepXLabel = new Label("Horizontal Step");
+            stepX = new TextField("8.5");
+            boxX.getChildren().add(stepXLabel);
+            boxX.getChildren().add(stepX);
 
-            Label stepYLabel = new Label("Step Y");
-            stepY = new TextField();
-            this.add(stepYLabel, 0, 3);
-            this.add(stepY, 1, 3);
+            Label stepYLabel = new Label("Vertical Step");
+            stepY = new TextField("5");
+            boxY.getChildren().add(stepYLabel);
+            boxY.getChildren().add(stepY);
 
             stepX.setFocusTraversable(false);
             stepY.setFocusTraversable(false);
+
+            stepX.setMaxWidth(100);
+            stepY.setMaxWidth(100);
+            boxX.setSpacing(15);
+            boxY.setSpacing(15);
 
         }
 

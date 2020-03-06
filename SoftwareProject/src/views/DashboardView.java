@@ -46,15 +46,14 @@ import javafx.util.Callback;
             header.setPadding(new Insets(8));
 
             searchField.setMinWidth(WIDTH*0.99);
-            searchField.setMinHeight(50);
+            searchField.setMinHeight(30);
             searchField.setFocusTraversable(false);
             searchBox=new HBox(searchField);
             searchBox.setMinWidth(WIDTH);
             searchBox.setSpacing(14);
             searchBox.setAlignment(Pos.CENTER);
             searchBox.setPadding(new Insets(5));
-            
-            createBtn.setMinHeight(48);
+
             createBtn.setMinWidth(WIDTH*0.12);
             createBtn.getStyleClass().add("create");
 

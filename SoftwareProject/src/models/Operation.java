@@ -3,7 +3,7 @@ package models;
 import java.sql.Timestamp;
 
 public class Operation {
-	private int doctorId, patientId, machineId, surgeryId, machineRoomNb;;
+	private int doctorId, patientId, machineId, surgeryId, machineRoomNb,maxTimerVal, maxRadiationVal;
 	private Timestamp appointmentDate, registrationDate, startTime, endTime;
 	private String name, description, duration;
 	private String doctorName, patientName, machineState;
@@ -154,4 +154,21 @@ public class Operation {
 	public void setPatientName(String patientName) {
 		this.patientName = patientName;
 	}
+	public int getMaxTimerVal() {
+		return maxTimerVal;
+	}
+
+	public void setMaxTimerVal(int maxTimerVal) {
+		this.maxTimerVal = maxTimerVal;
+	}
+
+	public int getMaxRadiationVal() {
+		return maxRadiationVal;
+	}
+
+	public void setMaxRadiationVal(int maxRadiationVal) {
+		this.maxRadiationVal = maxRadiationVal;
+	}
+
+
 }

@@ -71,7 +71,8 @@ public class EditPatientView  extends GridPane{
 	    phone.setPrefWidth(width);
 	    phone.setText(p.getPhone());
 	    addRow(y,names[y], phone);
-	    	    
+
+
 	    
 	    names[++y]=new Label("Date of Birth");
 	    names[y].getStyleClass().add("name");
@@ -93,6 +94,7 @@ public class EditPatientView  extends GridPane{
 	    bloodType = new ComboBox<String>();
         bloodType.getItems().addAll("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-");
         bloodType.setValue(p.getBloodType());
+		bloodType.setPrefWidth(220);
 	    addRow(y,names[y], bloodType);
 	    
 	    

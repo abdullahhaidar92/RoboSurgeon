@@ -23,7 +23,7 @@ public class AssisstantDashboard extends Dashboard {
 
     @Override
     public void showCreateForm() {
-        Window window=new Window("Add new asisstant",500,500);
+        Window window=new Window("Add new asisstant",500,570);
         Assistant a = new Assistant();
         AssistantCreateView view=new AssistantCreateView(a);
         window.setContent(view);
@@ -36,7 +36,7 @@ public class AssisstantDashboard extends Dashboard {
     @Override
     public void showDetails(int id) {
     	 Assistant selectedAssistant =(Assistant)getModel().getProfile(id);
-         Window window=new Window("Details",500,500);
+         Window window=new Window("Details",450,500);
          AssitantDetailsView view=new AssitantDetailsView(selectedAssistant);
          window.setContent(view);
          view.setParent(window);
@@ -47,7 +47,7 @@ public class AssisstantDashboard extends Dashboard {
     @Override
     public void showEditForm(int id) {
         Assistant selectedAssistant =(Assistant)getModel().getProfile(id);
-        Window window=new Window("Edit Assistant",500,500);
+        Window window=new Window("Edit Assistant",500,550);
         AssistantEditView view=new AssistantEditView(selectedAssistant);
         window.setContent(view);
         view.setParent(window);
@@ -61,7 +61,7 @@ public class AssisstantDashboard extends Dashboard {
     public void showDeleteForm(int id) {
     	flag = false;
     	Assistant selectedAssistant =(Assistant)getModel().getProfile(id);
-    	 Window window=new Window("Delete Assistant",500,400);
+    	 Window window=new Window("Delete Assistant",500,350);
     	 AssistantDeleteView view= new AssistantDeleteView(selectedAssistant);
          window.setContent(view);
          view.setParent(window);

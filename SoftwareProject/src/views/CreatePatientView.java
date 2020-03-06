@@ -103,7 +103,7 @@ public class CreatePatientView  extends GridPane{
 	    
 	    bloodType = new ComboBox<String>();
         bloodType.getItems().addAll("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-");
-	    
+	    bloodType.setPrefWidth(220);
 	    addRow(y,names[y], bloodType);
 	    
 	    
@@ -132,7 +132,7 @@ public class CreatePatientView  extends GridPane{
 	    
 	    
 	    
-	    names[++y]=new Label("Oxygen");
+	    names[++y]=new Label("Oxygen Level");
 	    names[y].getStyleClass().add("name");
 	    oxygen = new TextField();
 	    oxygen.setPrefWidth(width);
@@ -164,7 +164,7 @@ public class CreatePatientView  extends GridPane{
 	    
 	    
 	    
-	    names[++y]=new Label("Normal Oxygen");
+	    names[++y]=new Label("Normal Oxygen Level");
 	    names[y].getStyleClass().add("name");
 	    normalOxygen = new TextField();
 	    normalOxygen.setPrefWidth(width);

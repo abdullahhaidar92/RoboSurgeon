@@ -83,7 +83,7 @@ public class SystemMonitor extends CommandHandler {
     }
 
     @Override
-    public boolean setEmissionDuration(double value) {
+    public boolean setEmissionDuration(int value) {
         radiationDuration=value;
         return getSuccessor().setEmissionDuration(value);
     }

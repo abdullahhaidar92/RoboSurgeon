@@ -32,7 +32,7 @@ public class OperationDashboard extends Dashboard {
 
 	@Override
 	public void showCreateForm() {
-			Window window=new Window("Create",500,350);
+			Window window=new Window("Create",530,455);
 			patients=getModel().getPatients();
 		    ArrayList<String > patientnames=new ArrayList();
 			for(int i=0;i<patients.size();i++)
@@ -65,6 +65,7 @@ public class OperationDashboard extends Dashboard {
 		String str=createSurgeryView.getDatePicker().getValue()+" "+createSurgeryView.getTimeField().getValue();
 		o.setAppointmentDate(Timestamp.valueOf(str));
 		o.setRegistrationDate(Timestamp.from(Instant.now()));
+
 		createSurgeryView.showAlert(getModel().create(o),"Create");
 		reloadProfiles();
 
@@ -102,7 +103,7 @@ public class OperationDashboard extends Dashboard {
 	public void showEditForm(int id) {
 		int l=0,j=0,k=0;
 		Operation o =(Operation)getModel().getProfile(id);
-		Window window=new Window("Edit Operation",500,350);
+		Window window=new Window("Edit Operation",530,455);
 		patients=getModel().getPatients();
 		ArrayList<String > patientnames=new ArrayList();
 		for(int i=0;i<patients.size();i++)

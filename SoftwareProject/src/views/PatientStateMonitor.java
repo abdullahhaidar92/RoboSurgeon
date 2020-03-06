@@ -14,15 +14,22 @@ public class PatientStateMonitor extends StackPane {
     public PatientStateMonitor(OperationDashboard dashboard){
         VBox monitor=new VBox();
         VBox labels=new VBox();
-        heartBeatSignal.getLineChart().setPadding(new Insets(-5,-10,-30,-25));
-        bloodPressureSignal.getLineChart().setPadding(new Insets(-20,-10,-30,-25));
-        temperatureSignal.getLineChart().setPadding(new Insets(-20,-10,-30,-25));
-        oxygenLevelSignal.getLineChart().setPadding(new Insets(-20,-10,-5,-25));
+
+        heartBeatSignal.setType("pulse");
+        bloodPressureSignal.setType("pressure");
+        temperatureSignal.setType("temperature");
+        oxygenLevelSignal.setType("oxygen");
+
+
+        heartBeatSignal.getLineChart().setPadding(new Insets(-5,-10,-34,-25));
+        bloodPressureSignal.getLineChart().setPadding(new Insets(-24,-10,-34,-25));
+        temperatureSignal.getLineChart().setPadding(new Insets(-24,-10,-34,-25));
+        oxygenLevelSignal.getLineChart().setPadding(new Insets(-24,-10,-30,-25));
         heartBeatSignal.setColor("Yellow");
         bloodPressureSignal.setColor("Green");
         temperatureSignal.setColor("Red");
         monitor.setMaxWidth(400);
-        monitor.setMaxHeight(dashboard.getHeight()*0.7);
+        monitor.setMaxHeight(dashboard.getHeight()*0.75);
         monitor.setSpacing(-10);
         monitor.getChildren().addAll(heartBeatSignal.getLineChart(),bloodPressureSignal.getLineChart(),temperatureSignal.getLineChart(),oxygenLevelSignal.getLineChart());
         final int spacing=87;

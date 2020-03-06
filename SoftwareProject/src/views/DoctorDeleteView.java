@@ -18,27 +18,49 @@ import models.Doctor;
 public class DoctorDeleteView extends GridPane{
 	private Stage parentStage;
 	public DoctorDeleteView(Doctor d) {
-		GridPane grid = this;
-		
-		grid.setPadding(new Insets(10, 10, 10, 10));
-    	grid.setVgap(30);
-		Label question = new Label("Are you sure you want to delete "+"\n"+"this doctor?");
-		question.getStyleClass().add("question");
-		Label firstname = new Label("First Name: ");
-		firstname.getStyleClass().add("name");
-		Label lastname = new Label("Last Name: ");
-		lastname.getStyleClass().add("name");
-		Label middlename = new Label("Middle Name: ");
-		middlename.getStyleClass().add("name");
-		Label fname = new Label(d.getFirstName());
-		fname.getStyleClass().add("value");
-		Label lname = new Label(d.getLastName());
-		lname.getStyleClass().add("value");
-		Label mname = new Label(d.getMiddleName());
-		mname.getStyleClass().add("value");
-		Button delete = new Button("Delete");
-		delete.getStyleClass().add("delete");
-		delete.setOnAction(e->{
+		Label[] names=new Label[4],values=new Label[4];
+		int x=0,y=0;
+		setHgap(20);
+		setVgap(10);
+		setPadding(new Insets(30,30,30,30));
+
+		Label label=new Label(" Are you sure you want to delete this "+" \n "+"doctor?");
+		add(label,x++,y,2,1);
+		label.getStyleClass().add("name");
+
+		names[++y]=new Label("First Name: ");
+		names[y].getStyleClass().add("name");
+		values[y]=new Label(d.getFirstName());
+		values[y].getStyleClass().add("value");
+		add(names[y],--x,y,1,1);
+		add(values[y],++x,y,1,1);
+
+
+		names[++y]=new Label("Middle Name: ");
+		names[y].getStyleClass().add("name");
+		values[y]=new Label(d.getMiddleName());
+		values[y].getStyleClass().add("value");
+		add(names[y],--x,y,1,1);
+		add(values[y],++x,y,1,1);
+
+
+		names[++y]=new Label("Last Name: ");
+		names[y].getStyleClass().add("name");
+		values[y]= new Label(d.getLastName());
+		values[y].getStyleClass().add("value");
+		add(names[y],--x,y,1,1);
+		add(values[y],++x,y,1,1);
+
+
+		addRow(++y,new Label(" "));
+		Button confirmDelete =new Button(" Confirm  ");
+		confirmDelete.setPrefSize(100,30);
+		confirmDelete.getStyleClass().add("delete");
+		addRow(++y,new Label(" "),confirmDelete);
+
+		getStylesheets().add(getClass().getResource("/css/details.css").toExternalForm());
+
+		confirmDelete.setOnAction(e->{
 			int id = d.getDoctorId();
 			ResultSet resultSet = Database.getResults("select profileID from dbo.[User] where USERID = "
 					+ "(select UserId from Doctor where DOCTORID = " + id +")");
@@ -68,16 +90,7 @@ public class DoctorDeleteView extends GridPane{
 				}
 			}
 		});
-		grid.add(question, 0, 1);
-		grid.add(firstname, 0, 2);
-		grid.add(middlename, 0, 3);
-		grid.add(lastname, 0, 4);
-		
-		grid.add(fname, 1, 2);
-		grid.add(mname, 1, 3);
-		grid.add(lname, 1, 4);
-		
-		grid.add(delete, 1, 5);
+
 		getStylesheets().add(getClass().getResource("/css/details.css").toExternalForm());
 		
 	}

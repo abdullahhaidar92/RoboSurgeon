@@ -52,9 +52,9 @@ public class AssisstantDashboardModel extends DashboardModel<Assistant> {
             if (rs != null )
                 while (rs.next()) {
                     Assistant a = new Assistant(rs.getInt("PROFILEID"),
-                            rs.getString("FIRSTNAME"),
-                            rs.getString("MIDDLENAME"),
-                            rs.getString("LASTNAME"));
+                            rs.getString("FIRSTNAME").trim(),
+                            rs.getString("MIDDLENAME").trim(),
+                            rs.getString("LASTNAME").trim());
                     ResultSet rSet = Database.getResults("select DOCTORID from ASSISTANT "
                     		+ "where ASSISTANTID =" 
                     		+rs.getInt("ASSISTANTID"));
@@ -64,12 +64,12 @@ public class AssisstantDashboardModel extends DashboardModel<Assistant> {
                     	a.setDoctorId(rSet.getInt("DOCTORID"));
                     }
                     a.setAssistantId(rs.getInt("ASSISTANTID"));
-                    a.setAddress(rs.getString("ADDRESS"));
-                    a.setPhone(rs.getString("PHONE"));
+                    a.setAddress(rs.getString("ADDRESS").trim());
+                    a.setPhone(rs.getString("PHONE").trim());
                     a.setBirthDate(rs.getDate("DATEOFBIRTH"));
-                    a.setBloodType(rs.getString("BLOODTYPE"));
-                    a.setEmail(rs.getString("EMAIL"));
-                    a.setContractType(rs.getString("CONTRACTTYPE"));
+                    a.setBloodType(rs.getString("BLOODTYPE").trim());
+                    a.setEmail(rs.getString("EMAIL").trim());
+                    a.setContractType(rs.getString("CONTRACTTYPE").trim());
                     assistants.add(a);
                 }
         }

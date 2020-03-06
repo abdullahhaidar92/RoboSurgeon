@@ -64,7 +64,7 @@ public class DoctorsDashboard extends Dashboard {
     public void showDeleteForm(int id) {
     	flag = false;
     	Doctor selectedDr =(Doctor)getModel().getProfile(id);
-    	 Window window=new Window("Delete Doctor",500,400);
+    	 Window window=new Window("Delete Doctor",500,350);
     	 DoctorDeleteView view= new DoctorDeleteView(selectedDr);
          window.setContent(view);
          view.setParent(window);

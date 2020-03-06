@@ -7,9 +7,12 @@ import components.Window;
 import controllers.XraysController;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
+import javafx.scene.control.Separator;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import machine.XRay;
 
 import javax.xml.stream.EventFilter;
 
@@ -29,6 +32,7 @@ public class OperationDashboard extends Window {
         this.appointmentDate=appointmentDate;
         xraysView = new XraysView(this);
         super.setupScene(xraysView);
+        XRay.getXRay().setXraysView(xraysView);
         monitor = new PatientStateMonitor(this);
         emissionControl = new EmissionControl(this);
         seedControl = new SeedControl(this);
@@ -37,7 +41,9 @@ public class OperationDashboard extends Window {
         emissionControl=new EmissionControl(this);
         seedControl=new SeedControl(this);
         HBox box1=new HBox(xraysView,monitor);
+        Separator separator=new Separator(Orientation.VERTICAL);
         HBox box2=new HBox(emissionControl,seedControl);
+        box2.setSpacing(5);
         VBox pane = new VBox(box1,box2);
 
 
@@ -47,8 +53,7 @@ public class OperationDashboard extends Window {
         pane.setMinWidth(getWidth());
         pane.setPadding(new Insets(0,2,10,0));
 
-        Sensor sensor = new Sensor(monitor.getHeartBeatSignal(), monitor.getBloodPressureSignal(), monitor.getTemperatureSignal(), monitor.getOxygenLevelSignal());
-        sensor.start();
+
         pane.getStylesheets().add(getClass().getResource("/css/operation.css").toExternalForm());
         setContent(pane);
         pane.getStyleClass().add("root");

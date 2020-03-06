@@ -3,10 +3,7 @@ package controllers;
 import machine.*;
 import views.*;
 import views.OperationDashboard;
-
-import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class OperationController {
@@ -17,10 +14,21 @@ public class OperationController {
     private static PatientStateMonitor patientStateMonitor;
     private static XraysView xraysView;
     private OperationDashboard operationDashboard;
-
+    private Seed seed=Seed.getSeed();
+    private HealthMonitor healthMonitorThread;
 
     public void moveRight(double value){
         commandHandler.moveRight(value);
+    }
+    public void moveLeft(double value){
+        commandHandler.moveLeft(value);
+    }
+
+    public void moveDown(double value){
+        commandHandler.moveDown(value);
+    }
+    public void moveUp(double value){
+        commandHandler.moveUp(value);
     }
 
     public static void setEmissionError(String message){
@@ -51,25 +59,47 @@ public class OperationController {
         }
     }
 
+    public boolean setRadiation(double value){
+        return commandHandler.setRadiation(value);
+    }
+    public boolean setEmissionDuration(int value){
+        return commandHandler.setEmissionDuration(value);
+    }
+    public boolean startEmission(){
+        boolean success= commandHandler.startEmission();
+        if(success)
+            xraysView.startEmission();
+        return success;
+    }
+    public boolean stopEmission(){
+        boolean success= commandHandler.stopEmission();
+        if(success)
+            xraysView.stopEmission();
+        return success;
+    }
 
-    private CommandHandler getCommandHandler() {
+    public CommandHandler getCommandHandler() {
         MoveStrategy strategy = new RelativePositionsMoveStrategy();
         CommandHandler systemMonitor=new SystemMonitor();
         CommandHandler machine = Machine.getMachine();
         machine.setStrategy(strategy);
         HealthMonitor healthMonitor=new HealthMonitor();
+        SafetyKernel safetyKernel=new SafetyKernel();
 
-        systemMonitor.setSuccessor(healthMonitor);
-        healthMonitor.setSuccessor(machine);
+        systemMonitor.setSuccessor(safetyKernel);
+        safetyKernel.setSuccessor(machine);
+        //healthMonitor.setSuccessor(machine);
         machine.setSuccessor(null);
 
-        Thread healthMonitorThread=new Thread(new HealthMonitor());
-        healthMonitorThread.start();
+        healthMonitorThread=new HealthMonitor();
+        healthMonitorThread.setOn();
+        new Thread(healthMonitorThread).start();
 
         return systemMonitor;
     }
 
     public OperationController() {
+        Machine.getMachine().start();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
         Timestamp timestamp = null;
         try {
@@ -80,20 +110,26 @@ public class OperationController {
         }
 
         emissionControl=operationDashboard.getEmissionControl();
+        emissionControl.setController(this);
         seedControl=operationDashboard.getSeedControl();
         patientStateMonitor=operationDashboard.getStateMonitor();
         xraysView=operationDashboard.getXraysView();
+        xraysView.setOperationController(this);
 
-        Sensor sensor = new Sensor(patientStateMonitor.getHeartBeatSignal(),
+        Machine.getMachine().getRightCoil().setXPos(xraysView.getXRayWidth());
+        Machine.getMachine().getBottomCoil().setYPos(xraysView.getXRayHeight());
+
+        Sensor sensor = Sensor.getSensor(patientStateMonitor.getHeartBeatSignal(),
                 patientStateMonitor.getBloodPressureSignal(),
                 patientStateMonitor.getTemperatureSignal(),
                 patientStateMonitor.getOxygenLevelSignal());
-        sensor.start();
+       // sensor.start();
         sensor.setON();
 
 
         operationDashboard.getClose().setOnAction(e->{
             sensor.setOFF();
+            healthMonitorThread.setOff();
             operationDashboard.close();
             if(operationDashboard.getDashboard()!=null)
                 operationDashboard.getDashboard().getView().show();

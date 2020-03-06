@@ -18,24 +18,26 @@ public class AssistantDeleteView extends GridPane{
 	private Stage parentStage;
 	public AssistantDeleteView(Assistant a) {
 		GridPane grid = this;
-		
-		grid.setPadding(new Insets(10, 10, 10, 10));
-    	grid.setVgap(30);
-		Label question = new Label("Are you sure you want to delete "+"\n"+"this assistant?");
-		question.getStyleClass().add("question");
+
+		setPadding(new Insets(30,30,30,30));
+        setVgap(10);
+		setHgap(20);
+		Label question = new Label(" Are you sure you want to delete this "+"\n"+"assistant?");
+		question.getStyleClass().add("name");
 		Label firstname = new Label("First Name: ");
 		firstname.getStyleClass().add("name");
 		Label lastname = new Label("Last Name: ");
 		lastname.getStyleClass().add("name");
 		Label middlename = new Label("Middle Name: ");
 		middlename.getStyleClass().add("name");
-		Label fname = new Label(a.getFirstName());
-		fname.getStyleClass().add("value");
-		Label lname = new Label(a.getLastName());
-		lname.getStyleClass().add("value");
-		Label mname = new Label(a.getMiddleName());
-		mname.getStyleClass().add("value");
+		Label fname = new Label(a.getFirstName().trim());
+
+		Label lname = new Label(a.getLastName().trim());
+
+		Label mname = new Label(a.getMiddleName().trim());
+
 		Button delete = new Button("Delete");
+		delete.setPrefSize(100,30);
 		delete.getStyleClass().add("delete");
 		delete.setOnAction(e->{
 			int id = a.getAssistantId();
@@ -64,7 +66,7 @@ public class AssistantDeleteView extends GridPane{
 				}
 			}
 		});
-		grid.add(question, 0, 1);
+		grid.add(question, 0, 1,2,1);
 		grid.add(firstname, 0, 2);
 		grid.add(middlename, 0, 3);
 		grid.add(lastname, 0, 4);

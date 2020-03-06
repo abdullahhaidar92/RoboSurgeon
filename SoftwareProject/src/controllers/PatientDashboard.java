@@ -134,7 +134,7 @@ public class PatientDashboard extends Dashboard {
 	public void showDeleteForm(int id) {
 		 flag = false;
     	 Patient selectedAssistant =(Patient)getModel().getProfile(id);
-     	 Window window=new Window("Delete Patient",500,400);
+     	 Window window=new Window("Delete Patient",500,350);
     	 PatientDeleteView view= new PatientDeleteView(selectedAssistant);
          window.setContent(view);
          view.setParent(window);

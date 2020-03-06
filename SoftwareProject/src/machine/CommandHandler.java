@@ -11,7 +11,7 @@ public abstract class CommandHandler {
     public abstract boolean moveRight(double value);
     public abstract boolean moveLeft(double value);
     public abstract boolean setRadiation(double value);
-    public abstract boolean setEmissionDuration(double value);
+    public abstract boolean setEmissionDuration(int value);
     public abstract boolean startEmission();
     public abstract boolean stopEmission();
     public abstract boolean startXRay();

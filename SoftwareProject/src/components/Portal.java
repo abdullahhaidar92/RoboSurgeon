@@ -27,8 +27,8 @@ public class Portal extends Stage {
         root.setCenter(content);
         root.setTop(header);
 
-        content.setSpacing(50);
-        content.setPadding(new Insets(40, 40, 40, 60));
+        content.setSpacing(90);
+        content.setPadding(new Insets(60, 40, 40, 110));
 
         close.getStyleClass().add("close");
         close.setFocusTraversable(false);
@@ -37,8 +37,8 @@ public class Portal extends Stage {
         });
 
         setScene(new Scene(root));
-        setWidth(800);
-        setHeight(500);
+        setWidth(670);
+        setHeight(512);
         initStyle(StageStyle.UNDECORATED);
 
     }

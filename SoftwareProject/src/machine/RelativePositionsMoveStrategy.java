@@ -80,9 +80,9 @@ public class RelativePositionsMoveStrategy implements MoveStrategy {
             bottomCoilMagnitude=0;
             return;
         }
-        double ratio=(1-yPos)/yPos;
-        topCoilMagnitude=ratio*totalMagnitude;
-        bottomCoilMagnitude=totalMagnitude-leftCoilMagnitude;
+        double ratio=(1.0-yPos)/yPos;
+        topCoilMagnitude=(ratio/(ratio+1))*totalMagnitude;
+        bottomCoilMagnitude=totalMagnitude-topCoilMagnitude;
 
     }
 }

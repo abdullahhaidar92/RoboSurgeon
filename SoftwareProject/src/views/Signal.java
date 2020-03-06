@@ -1,5 +1,6 @@
 package views;
 
+import controllers.OperationController;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -9,6 +10,17 @@ public class Signal {
     private  NumberAxis yAxis;
     private  LineChart linechart;
     private  XYChart.Series series;
+    private Sensor sensor;
+    private String type;
+
+    public void update(){
+        switch(type){
+            case "pulse" :add(sensor.getTime(),sensor.getChartValue("pulse"));break;
+            case "pressure" :add(sensor.getTime(),sensor.getChartValue("pressure"));break;
+            case "temperature" :add(sensor.getTime(),sensor.getChartValue("temperature"));break;
+            case "oxygen" :add(sensor.getTime(),sensor.getChartValue("oxygen"));break;
+        }
+    }
 
     public void add(int x,double y){
         if(x>20) {
@@ -20,9 +32,12 @@ public class Signal {
         series.getData().add(new XYChart.Data(x,y));
     }
 
-    public void setColor(String color){
-        getLineChart().getStylesheets().add(getClass().getResource("/css/signal"+color+".css").toExternalForm());
-
+    public  synchronized void setColor(String color){
+        try {
+            getLineChart().getStylesheets().add(getClass().getResource("/css/signal" + color + ".css").toExternalForm());
+        }catch (Exception e){
+            System.out.println("Changing signal colors failed");
+        }
     }
 
     public NumberAxis getxAxis() {
@@ -55,5 +70,13 @@ public class Signal {
 
     public void setSeries(XYChart.Series series) {
         this.series = series;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setSensor(Sensor sensor) {
+        this.sensor = sensor;
     }
 }

@@ -6,11 +6,7 @@ import components.Portal;
 import controllers.OperationDashboard;
 import controllers.PatientDashboard;
 import javafx.stage.Stage;
-import models.DashboardModel;
-import models.Operation;
-import models.OperationDashboardModel;
-import models.Patient;
-import models.PatientDashboardModel;
+import models.*;
 import views.DashboardView;
 import views.OperationDashboardView;
 import views.PatientDashboardView;
@@ -20,10 +16,10 @@ public class AssistantFactory implements UserFactory {
     public Portal getPortal() {
         Portal portal=new Portal();
         ImageIcon patientsBtn=new ImageIcon("PATIENTS","images/pat_logo.png");
-        ImageIcon surgeriesBtn=new ImageIcon("SURGERIES","images/surgery.png");
+        ImageIcon surgeriesBtn=new ImageIcon("Operations","images/surgery.png");
         portal.addImageIcon(patientsBtn);
         portal.addImageIcon(surgeriesBtn);
-        portal.setTitleBox("Assistant home");
+        portal.setTitleBox("Assistant "+ CurrentUser.getCurrentUser().getName());
         patientsBtn.setOnAction(e->{
             portal.close();
             Stage s= getDashboard("patients").getView();

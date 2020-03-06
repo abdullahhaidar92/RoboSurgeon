@@ -1,10 +1,13 @@
 package views;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
+import controllers.OperationController;
 import javafx.animation.AnimationTimer;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -17,19 +20,23 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import machine.Seed;
 
 public class XraysView extends VBox {
     OperationDashboard operationDashboard;
+    OperationController operationController;
     Canvas canvas = new Canvas(850, 500);
     GraphicsContext context = canvas.getGraphicsContext2D();
-    Label xValue = new Label("50 ");
-    Label yValue = new Label("50 ");
-    private double x = 50, y = 50, stepX = 10, stepY = 10;
+    private Seed seed= Seed.getSeed();
+    private int width=850,height=500;
+    private double x =seed.getxPos()*width , y =seed.getyPos()*height, stepX = 10, stepY = 10;
     private ArrayList<Tumor> tumors = new ArrayList();
+    Label xValue = new Label(""+x);
+    Label yValue = new Label(""+y);
 
     public XraysView(OperationDashboard dashboard){
         setMinWidth(dashboard.getWidth()*0.7);
-        setMinHeight(dashboard.getHeight()*0.7);
+        setMinHeight(dashboard.getHeight()*0.75);
         operationDashboard = dashboard;
         Label xLabel = new Label("x: ");
         Label yLabel = new Label(" y: ");
@@ -40,12 +47,14 @@ public class XraysView extends VBox {
         HBox coordinates = new HBox();
         coordinates.getChildren().addAll(xLabel, xValue, yLabel, yValue);
         coordinates.setAlignment(Pos.CENTER);
-        coordinates.setStyle("-fx-background-color:white;");
+        coordinates.getStyleClass().add("xrayLable");
         StackPane stackPane = new StackPane();
-
+        setSpacing(20);
+        setPadding(new Insets(15,4,4,4));
         File file = new File("BrainTumor/Tumor3.jpg");
         Image image = new Image(file.toURI().toString());
         ImageView imageView = new ImageView(image);
+
         imageView.setFitHeight(500);
         imageView.setFitWidth(850);
         init();
@@ -97,28 +106,36 @@ public class XraysView extends VBox {
         stepY = operationDashboard.getSeedControl().getStepY();
     }
 
-
     public void moveRight(){
         setStepX();
-        x += stepX;
+        System.out.println(stepX);
+        operationController.moveRight(stepX);
+        x =Double.parseDouble(new DecimalFormat("##.00").format(seed.getxPos()*width));
         xValue.setText(String.valueOf(x));
         render();
+
+
     }
     public void moveLeft(){
         setStepX();
-        x -= stepX;
+        operationController.moveLeft(stepX);
+        x =Double.parseDouble(new DecimalFormat("##.00").format(seed.getxPos()*width));
         xValue.setText(String.valueOf(x));
         render();
     }
     public void moveUp(){
         setStepY();
-        y -= stepY;
+        operationController.moveUp(stepY);
+        y =Double.parseDouble(new DecimalFormat("##.00").format(seed.getyPos()*height));
         yValue.setText(String.valueOf(y));
         render();
+
+
     }
     public void moveDown(){
         setStepY();
-        y += stepY;
+        operationController.moveDown(stepY);
+        y =Double.parseDouble(new DecimalFormat("##.00").format(seed.getyPos()*height));
         yValue.setText(String.valueOf(y));
         render();
     }
@@ -188,7 +205,7 @@ public class XraysView extends VBox {
         anime.start();
     }
 
-    private class Tumor{
+    public class Tumor{
         double x;
         double y;
         double radius;
@@ -201,10 +218,53 @@ public class XraysView extends VBox {
             this.opacity = opacity;
         }
 
+        public double getX() {
+            return x;
+        }
+
+        public double getY() {
+            return y;
+        }
+
+        public double getRadius() {
+            return radius;
+        }
+
+        public double getOpacity() {
+            return opacity;
+        }
     }
+
+
+
+
+    public void setOperationController(OperationController operationController) {
+        this.operationController = operationController;
+    }
+
+    public ArrayList<Tumor> getTumors() {
+        return tumors;
+    }
+
+    public int getXRayWidth() {
+        return width;
+    }
+
+    public int getXRayHeight() {
+        return height;
+    }
+
 
     public void setError(String message){
-
+        // alert message ( wrong location)
     }
+
+    public void startEmission(){
+        // start animation
+    }
+    public void stopEmission(){
+         // stop animation
+    }
+
 
 }

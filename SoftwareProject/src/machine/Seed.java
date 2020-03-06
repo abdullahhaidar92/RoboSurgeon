@@ -31,8 +31,8 @@ public class Seed {
         xPos=1-leftCoil.getMagnitude()/(rightCoil.getMagnitude()+leftCoil.getMagnitude());
         yPos=1-topCoil.getMagnitude()/(topCoil.getMagnitude()+bottomCoil.getMagnitude());
         DecimalFormat decimalFormat=new DecimalFormat("##.00");
-        xPos=Double.valueOf(decimalFormat.format(xPos));
-        yPos=Double.valueOf(decimalFormat.format(yPos));
+//        xPos=Double.valueOf(decimalFormat.format(xPos));
+//        yPos=Double.valueOf(decimalFormat.format(yPos));
         //notify XRAY screen
     }
 

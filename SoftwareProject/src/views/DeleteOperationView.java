@@ -51,6 +51,7 @@ public class DeleteOperationView extends GridPane {
         addRow(++y,new Label(" "));
         confirmDelete =new Button(" Confirm  ");
         confirmDelete.setPrefSize(100,30);
+        confirmDelete.getStyleClass().add("delete");
         addRow(++y,new Label(" "),confirmDelete);
         getStylesheets().add(getClass().getResource("/css/details.css").toExternalForm());
     }

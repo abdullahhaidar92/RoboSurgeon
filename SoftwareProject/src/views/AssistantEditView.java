@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import models.Assistant;
 
@@ -170,7 +171,7 @@ public class AssistantEditView extends GridPane {
         	  
            while ( rs.next() ) 
            { 
-        	DoctorCombo dc = new DoctorCombo(rs.getString("FIRSTNAME"),rs.getString("LASTNAME"),rs.getInt("DoctorId"));
+        	DoctorCombo dc = new DoctorCombo(rs.getString("FIRSTNAME").trim(),rs.getString("LASTNAME").trim(),rs.getInt("DoctorId"));
         	if (dc.getDoctorId() == a.getDoctorId())
         		d = dc;
         	listacombo.add(dc);
@@ -210,12 +211,15 @@ public class AssistantEditView extends GridPane {
      	 userTextLabel.setText(  s +  lastNameField.getText());
      	   
         });
-         
-       
+
+        doctor.setMinWidth(210);
+        contracttype.setMinWidth(210);
+        bloodType.setMinWidth(210);
+
         // Add create button
         Button editBtn = new Button("Edit Assistant");
         GridPane.setHalignment(editBtn, HPos.CENTER);
-        grid.add(editBtn, 0,14);
+        editBtn.getStyleClass().add("edit");
         editBtn.setOnAction(e->{ 
         	if(
         		Validation.validateString(firstNameField,"First Name") &&
@@ -254,14 +258,19 @@ public class AssistantEditView extends GridPane {
         
         Button close =new Button("Close");
         GridPane.setHalignment(close, HPos.RIGHT);
-        grid.add(close, 2,14);
+        close.getStyleClass().add("cancel");
+        HBox box=new HBox(close,editBtn);
+        box.setSpacing(20);
+        box.setPadding(new Insets(10,0,0,0));
+        birthDateField.setMinWidth(210);
+        grid.addRow(14,new Label(" "),box);
         close.setOnAction(e->{ 
            Stage stage = (Stage) this.getScene().getWindow();
            stage.close();
           
         });
-        
-        
+
+        grid.getStylesheets().add(getClass().getResource("/css/edit.css").toExternalForm());
         
 
     }

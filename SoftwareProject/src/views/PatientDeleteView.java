@@ -18,23 +18,22 @@ public class PatientDeleteView extends GridPane{
 	private Stage parentStage;
 	public PatientDeleteView(Patient p) {
 		GridPane grid = this;
-		
-		grid.setPadding(new Insets(10, 10, 10, 10));
-    	grid.setVgap(30);
-		Label question = new Label("Are you sure you want to delete "+"\n"+"this patient?");
-		question.getStyleClass().add("question");
+
+		setHgap(20);
+		setVgap(10);
+		setPadding(new Insets(30,30,30,30));
+
+		Label question = new Label("Are you sure you want to delete this  "+"\n"+" patient?");
+		question.getStyleClass().add("name");
 		Label firstname = new Label("First Name: ");
 		firstname.getStyleClass().add("name");
 		Label lastname = new Label("Last Name: ");
 		lastname.getStyleClass().add("name");
 		Label middlename = new Label("Middle Name: ");
 		middlename.getStyleClass().add("name");
-		Label fname = new Label(p.getFirstName());
-		fname.getStyleClass().add("value");
-		Label lname = new Label(p.getLastName());
-		lname.getStyleClass().add("value");
-		Label mname = new Label(p.getMiddleName());
-		mname.getStyleClass().add("value");
+		Label fname = new Label(p.getFirstName().trim());
+		Label lname = new Label(p.getLastName().trim());
+		Label mname = new Label(p.getMiddleName().trim());
 		Button delete = new Button("Delete");
 		delete.getStyleClass().add("delete");
 		delete.setOnAction(e->{
@@ -65,7 +64,7 @@ public class PatientDeleteView extends GridPane{
 				}
 			}
 		});
-		grid.add(question, 0, 1);
+		grid.add(question, 0, 1,2,1);
 		grid.add(firstname, 0, 2);
 		grid.add(middlename, 0, 3);
 		grid.add(lastname, 0, 4);
@@ -73,8 +72,8 @@ public class PatientDeleteView extends GridPane{
 		grid.add(fname, 1, 2);
 		grid.add(mname, 1, 3);
 		grid.add(lname, 1, 4);
-		
-		grid.add(delete, 1, 5);
+
+		addRow(5,new Label(" "),delete);
 		getStylesheets().add(getClass().getResource("/css/details.css").toExternalForm());
 		
 	}
