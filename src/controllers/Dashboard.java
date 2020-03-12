@@ -1,12 +1,13 @@
-package components;
+package controllers;
 
 import models.DashboardModel;
 import views.DashboardView;
+
 import java.util.ArrayList;
 
 /*
-* High level controller , encapsulates common behavior for the low level controllers.
-* */
+ * High level controller , encapsulates common behavior for the low level controllers.
+ * */
 public abstract class Dashboard {
 
 
@@ -22,12 +23,22 @@ public abstract class Dashboard {
             showCreateForm();
         });
 
-        this.view.getSearchField().setOnAction(e->{
-
-                getModel().setProfiles(filter(getView().getSearchField().getText()));
-                getView().getTableData().addAll(getModel().getProfiles());
+        this.view.getSearchField().setOnAction(e -> {
+            search();
         });
     }
+
+    public void search() {
+        DashboardModel model = getModel();
+        DashboardView view = getView();
+        String query = view.getSearchField().getText();
+        ArrayList resultProfiles = filter(query);
+        model.setProfiles(resultProfiles);
+        view.getTableData().addAll(resultProfiles);
+    }
+
+    public abstract ArrayList<?> filter(String query);
+
 
     public DashboardView getView() {
         return view;
@@ -62,7 +73,7 @@ public abstract class Dashboard {
         view.addActionButtons();
     }
 
-    public void reloadProfiles(){
+    public void reloadProfiles() {
         getModel().setProfiles(model.loadProfiles());
         view.getTableData().setAll(getModel().getProfiles());
     }
@@ -74,10 +85,9 @@ public abstract class Dashboard {
     public abstract void showEditForm(int id);
 
     public abstract void showDeleteForm(int id);
-    public  void launch(int id){
+
+    public void launch(int id) {
     }
 
-
-    public abstract ArrayList<?> filter(String query);
 
 }

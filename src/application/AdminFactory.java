@@ -7,7 +7,7 @@ import views.AssisstantDashboardView;
 import views.DashboardView;
 import views.DoctorsDashboardView;
 import components.ImageIcon;
-import components.Dashboard;
+import controllers.Dashboard;
 import components.Portal;
 import javafx.stage.Stage;
 

@@ -1,6 +1,6 @@
 package application;
 
-import components.Dashboard;
+import controllers.Dashboard;
 import components.ImageIcon;
 import components.Portal;
 import controllers.OperationDashboard;

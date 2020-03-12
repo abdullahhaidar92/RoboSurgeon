@@ -1,6 +1,6 @@
 package views;
 
-import components.Dashboard;
+import controllers.Dashboard;
 import javafx.stage.StageStyle;
 import models.CurrentUser;
 import application.UserProducer;
@@ -14,8 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 

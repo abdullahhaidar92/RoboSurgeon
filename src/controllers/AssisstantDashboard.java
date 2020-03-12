@@ -1,6 +1,5 @@
 package controllers;
 
-import components.Dashboard;
 import components.Window;
 import models.Assistant;
 import models.DashboardModel;

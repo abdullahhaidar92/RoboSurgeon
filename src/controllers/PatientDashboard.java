@@ -2,7 +2,6 @@ package controllers;
 
 import java.util.ArrayList;
 
-import components.Dashboard;
 import components.Window;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,16 +9,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import models.Assistant;
 import models.DashboardModel;
-import models.Doctor;
 import models.Patient;
-import views.AssistantCreateView;
-import views.AssistantDeleteView;
-import views.AssistantEditView;
 import views.CreatePatientView;
 import views.DashboardView;
 import views.EditPatientView;

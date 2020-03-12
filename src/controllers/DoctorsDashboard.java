@@ -1,13 +1,9 @@
 package controllers;
 
-import models.Assistant;
 import models.DashboardModel;
 import models.Doctor;
 import views.*;
 import components.Window;
-import components.Dashboard;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 
