@@ -243,7 +243,48 @@ public class OperationDashboard extends Dashboard {
 
 	@Override
 	public  void launch(int id){
+		Operation o=(Operation)getModel().getProfile(id);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+		Timestamp timestamp = null;
+		try {
+			timestamp = new Timestamp(dateFormat.parse(o.getAppointmentDate()).getTime());
+			views.OperationDashboard operationDashboard =   new views.OperationDashboard(o.getDoctorId(), o.getPatientId(),timestamp);
+			OperationController controller=new OperationController(operationDashboard);
+			controller.setDashboardController(this);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try{
+			CurrentUser user = CurrentUser.getCurrentUser();
+			int currentUserId = user.getId();
+			int currentDoctorId = 0;
+			if(user.getRole().equals("Doctor"))
+				currentDoctorId = currentUserId;
+			else {
+				String query = "Select doctorId from Assistant where assistantId = " + currentUserId;
+				//System.out.println(query);
+				ResultSet idRs = Database.getResults(query);
+				try {
+					idRs.next();
+					currentDoctorId = idRs.getInt("DOCTORID");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 
+			String sql = "update OPERATION set STARTTIME=? where DOCTORID= ? and PATIENTID =? and APPOINTMENTDATE=? ";
+			PreparedStatement P = Database.getConnection().prepareStatement(sql);
+			P.setTimestamp(1,new Timestamp(System.currentTimeMillis()));
+			P.setInt(2, currentDoctorId);
+			P.setInt(3, o.getPatientId());
+			P.setTimestamp(4, Timestamp.valueOf(o.getAppointmentDate()));
+			P.execute();
+			reloadProfiles();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
 	}
 
 }
