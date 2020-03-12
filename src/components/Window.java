@@ -1,7 +1,6 @@
 package components;
 
 import controllers.Dashboard;
-import controllers.XraysController;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -12,7 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import views.XraysView;
+
 
 public class Window extends Stage {
 
@@ -63,8 +62,5 @@ public class Window extends Stage {
         return close;
     }
 
-    public void setupScene(XraysView view) {
-        XraysController x_rayController = new XraysController(view);
-        scene.setOnKeyPressed(x_rayController);
-    }
+
 }
