@@ -1,10 +1,13 @@
 .choice-box {
-  -fx-background-color: teal;
-  -fx-mark-color: orange; // arrow color
+  -fx-background-color: white;
+  -fx-mark-color: purple;
+-fx-border-color: silver ;
+    -fx-border-width: 1 ;
+    -fx-border-radius:3;
+
 }
 
-// Selected item text color on the control itself
-.choice-box > .label { -fx-text-fill: white; }
+.choice-box > .label { -fx-text-fill: black; }
 
 .name{
     -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
@@ -23,4 +26,7 @@
     -fx-text-fill:white;
     -fx-background-radius: 5, 5;
     -fx-cursor:hand;
+}
+.root{
+  -fx-background-color:  linear-gradient(to bottom right,derive(wheat,+50%),derive(wheat,+80%));
 }

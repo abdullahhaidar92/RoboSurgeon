@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="670.0" style="-fx-background-color: #2A3247;" stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+   <children>
+      <AnchorPane layoutX="98.0" layoutY="42.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="444.0" style="-fx-background-color: #2A3247;">
+         <children>
+            <AnchorPane layoutX="-100.0" layoutY="403.0" prefHeight="67.0" prefWidth="677.0" style="-fx-background-color: #4CA5A5;">
+               <children>
+                  <Button fx:id="loginButton" layoutX="276.0" layoutY="14.0" mnemonicParsing="false" onAction="#login" prefWidth="107.0" styleClass="create" text="Login" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="103.0" layoutY="206.0" prefHeight="50.0" prefWidth="270.0" style="-fx-border-radius: 2;">
+               <children>
+                  <Circle fill="#f5f5f5" layoutX="29.0" layoutY="26.0" radius="19.0" stroke="#8c90b3" strokeType="INSIDE" strokeWidth="0.5" />
+                  <TextField fx:id="username" layoutX="61.0" layoutY="7.0" prefHeight="25.0" prefWidth="200.0" promptText="Username" />
+                  <ImageView fx:id="userImage"  fitHeight="25.0" fitWidth="30.0" layoutX="16.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="104.0" layoutY="282.0" prefHeight="50.0" prefWidth="270.0" style="-fx-border-radius: 2;">
+               <children>
+                  <Circle fill="WHITE" layoutX="29.0" layoutY="26.0" radius="19.0" stroke="#8c90b3" strokeType="INSIDE" strokeWidth="0.5" />
+                  <ImageView fx:id="lockImage"   fitHeight="25.0" fitWidth="30.0" layoutX="17.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+
+                     </image>
+                  </ImageView>
+                  <PasswordField fx:id="password" layoutX="62.0" layoutY="6.0" prefHeight="25.0" prefWidth="200.0" promptText="Password" />
+               </children>
+            </AnchorPane>
+            <ImageView  fx:id="loginImage"  fitHeight="192.0" fitWidth="170.0" layoutX="169.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+               </image>
+            </ImageView>
+            <AnchorPane fx:id="wrongPane" layoutX="103.0" layoutY="345.0" prefHeight="50.0" prefWidth="270.0" style="-fx-border-radius: 2;" visible="false">
+               <children>
+                  <Circle fill="#f5f5f5" layoutX="29.0" layoutY="26.0" radius="19.0" stroke="#8c90b3" strokeType="INSIDE" strokeWidth="0.5" />
+                  <ImageView fx:id="errorImage" fitHeight="25.0" fitWidth="30.0" layoutX="16.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+
+                     </image>
+                  </ImageView>
+                  <Label layoutX="53.0" layoutY="17.0" prefHeight="20.0" prefWidth="200.0" text="Wrong Username or Password" textFill="#fffafa">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="emptyUsernamePane" layoutX="379.0" layoutY="206.0" prefHeight="50.0" prefWidth="58.0" style="-fx-border-radius: 2;" visible="false">
+               <children>
+                  <Circle fill="WHITE" layoutX="29.0" layoutY="26.0" radius="19.0" stroke="#8c90b3" strokeType="INSIDE" strokeWidth="0.5" />
+                  <ImageView fx:id="emptyImage" fitHeight="25.0" fitWidth="30.0" layoutX="17.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+           
+      
+         </children>
+      </AnchorPane>
+      <Button fx:id="closeLogin" layoutX="608.0" layoutY="14.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="19.0" styleClass="create" text="X" />
+      <AnchorPane fx:id="emptyPasswordPane" layoutX="478.0" layoutY="324.0" prefHeight="50.0" prefWidth="58.0" style="-fx-border-radius: 2;" visible="false">
+         <children>
+            <Circle fill="WHITE" layoutX="29.0" layoutY="26.0" radius="19.0" stroke="#8c90b3" strokeType="INSIDE" strokeWidth="0.5" />
+            <ImageView fx:id="empty2Image" fitHeight="25.0" fitWidth="30.0" layoutX="17.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

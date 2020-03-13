@@ -3,18 +3,18 @@ package application;
 import java.sql.*;
 
 public class Database {
-    private  static ResultSet rs = null;
-    private  static PreparedStatement P;
+    private static ResultSet rs = null;
+    private static PreparedStatement P;
     private String server = "localhost";
     private int port = 1433;
-    private String user ="sa";
-    private String password ="Aa123456789$";
+    private String user = "sa";
+    private String password = "Aa123456789$";
     private String database = "RoboDB";
     private String jdbcurl;
-    private static  Connection con = null;
+    private static Connection con = null;
 
 
-    private Database () {
+    private Database() {
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -35,8 +35,8 @@ public class Database {
         }
     }
 
-    public static Connection getConnection(){
-        if(con==null)
+    public static Connection getConnection() {
+        if (con == null)
             new Database();
         return con;
     }

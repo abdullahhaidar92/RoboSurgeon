@@ -1,11 +1,28 @@
 package models;
 
-public class Assistant extends User {
+import java.sql.Date;
 
+public class Assistant extends User {
+	private int assistantId;
+	private int doctorId;
     private String contractType;
 
+    
+    public int getDoctorId() {
+        return doctorId;
+    }
 
-    private String assistantId;
+    public void setDoctorId(int doctorId) {
+    
+        this.doctorId = doctorId;
+    }
+    public int getAssistantId() {
+        return assistantId;
+    }
+
+    public void setAssistantId(int Id) {
+        this.assistantId = Id;
+    }
 
     public String getContractType() {
         return contractType;
@@ -14,30 +31,16 @@ public class Assistant extends User {
     public void setContractType(String contractType) {
         this.contractType = contractType;
     }
-
-    public Doctor getDoctor() {
-        return doctor;
+    
+    public Assistant() {
+    	
     }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
-
-    private Doctor doctor;
 
     public Assistant(int id, String firstName, String middleName, String lastName) {
         super(id, firstName, middleName, lastName);
     }
 
-    public Assistant(int id, String firstName, String middleName, String lastName, String email, String phone, String birthDate, String address, String bloodType) {
-        super(id, firstName, middleName, lastName, email, phone, birthDate, address, bloodType);
-    }
-
-    public String getAssistantId() {
-        return assistantId;
-    }
-
-    public void setAssistantId(String assistantId) {
-        this.assistantId = assistantId;
+    public Assistant(int id,String firstName, String middleName, String lastName, String email, String phone, Date birthDate, String address, String bloodType) {
+    	super(id, firstName, middleName, lastName, email, phone, birthDate, address, bloodType);
     }
 }

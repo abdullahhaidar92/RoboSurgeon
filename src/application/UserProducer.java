@@ -4,6 +4,9 @@ import exceptions.UnAuthorizedUserException;
 
 public class UserProducer {
 
+    /*
+    * instantiates and returns the factory for each user
+    * */
     public UserFactory getUserFactory(String role) {
         if(role!=null)
             if (role.equals("admin"))

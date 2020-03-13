@@ -1,10 +1,13 @@
 package application;
 
-import models.CurrentUser;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
-import utility.FormValidation;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class Main extends Application {
@@ -13,19 +16,26 @@ public class Main extends Application {
     private static Stage primaryStage;
 
     @Override
-    public void start(Stage stage) throws SQLException {
-        CurrentUser.getCurrentUser().setRole("admin");
-         primaryStage = new UserProducer().getUserFactory("admin").getPortal();
-        // primaryStage = new UserProducer().getUserFactory("admin").getDashboard("doctors").getView();
-        // primaryStage = new UserProducer().getUserFactory("doctor").getPortal();
-        // primaryStage = new UserProducer().getUserFactory("assistant").getPortal();
+    public void start(Stage stage) throws SQLException, IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/LoginView.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 670, 512);
+        primaryStage = new Stage(StageStyle.UNDECORATED);
+        primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
+
+
     }
-    public static Stage getPrimaryStage(){
+
+    public static Stage getPrimaryStage() {
         return primaryStage;
     }
 
     public static void main(String[] args) {
-        launch(args);
+        try {
+            launch(args);
+        } catch (Exception e) {
+        }
     }
 }

@@ -1,6 +1,6 @@
 package views;
 
-import components.Dashboard;
+import controllers.Dashboard;
 import javafx.stage.StageStyle;
 import models.CurrentUser;
 import application.UserProducer;
@@ -14,8 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -30,6 +28,7 @@ import javafx.util.Callback;
         private boolean detailsEnabled=false;
         private boolean editEnabled=false;
         private boolean deleteEnabled=false;
+        private boolean launchEnabled=false;
         private Button createBtn=new Button("Create");
         private TextField searchField=new TextField();
         private Label title=new Label();
@@ -46,15 +45,14 @@ import javafx.util.Callback;
             header.setPadding(new Insets(8));
 
             searchField.setMinWidth(WIDTH*0.99);
-            searchField.setMinHeight(50);
+            searchField.setMinHeight(30);
             searchField.setFocusTraversable(false);
             searchBox=new HBox(searchField);
             searchBox.setMinWidth(WIDTH);
             searchBox.setSpacing(14);
             searchBox.setAlignment(Pos.CENTER);
             searchBox.setPadding(new Insets(5));
-            
-            createBtn.setMinHeight(48);
+
             createBtn.setMinWidth(WIDTH*0.12);
             createBtn.getStyleClass().add("create");
 
@@ -132,7 +130,7 @@ import javafx.util.Callback;
                             setGraphic(null);
                         } else {
                              HBox box=new HBox();
-                             Button detailsBtn,editBtn,deleteBtn;
+                             Button detailsBtn,editBtn,deleteBtn,launchBtn;
 
                                 box.setSpacing(11);
                                 box.setAlignment(Pos.CENTER);
@@ -166,6 +164,15 @@ import javafx.util.Callback;
                                 });
                                 box.getChildren().add(deleteBtn);
                             }
+                            if(launchEnabled){
+                                launchBtn=new Button("launch");
+                                launchBtn.getStyleClass().add("launch");
+                                launchBtn.setOnAction(e->{
+                                    if(controller!=null)
+                                        controller.launch(getIndex());
+                                });
+                                box.getChildren().add(launchBtn);
+                            }
 
                             setGraphic(box);
                         }
@@ -190,6 +197,9 @@ import javafx.util.Callback;
         }
         public void enableDelete(){
             deleteEnabled=true;
+        }
+        public void enableLaunch(){
+            launchEnabled=true;
         }
 
         public boolean createEnabled(){
