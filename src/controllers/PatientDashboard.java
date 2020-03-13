@@ -29,7 +29,7 @@ public class PatientDashboard extends Dashboard {
 	@Override
 	public void showCreateForm() {
 
-		Window window=new Window("Create Patient",530,700);
+		Window window=new Window("Create Patient",530,800);
 		CreatePatientView view = new CreatePatientView();
 		saveButton = view.getSaveButton();
 		saveButton.setOnAction(event -> {
@@ -56,7 +56,7 @@ public class PatientDashboard extends Dashboard {
 		});
 		ScrollPane sp = new ScrollPane();
 		sp.setMaxWidth(530);
-		sp.setMaxHeight(600);
+		sp.setMaxHeight(800);
 		sp.setContent(view);
 		window.setContent(sp);
 		// view.setParent(window);
@@ -66,11 +66,11 @@ public class PatientDashboard extends Dashboard {
 	@Override
 	public void showDetails(int id) {
 		Patient selectedPatient =(Patient)getModel().getProfile(id);
-		Window window=new Window("Details",530,700);
+		Window window=new Window("Details",530,800);
 		PatientDetailsView view=new PatientDetailsView(selectedPatient);
 		ScrollPane sp = new ScrollPane();
 		sp.setMaxWidth(530);
-		sp.setMaxHeight(600);
+		sp.setMaxHeight(800);
 		sp.setContent(view);
 		window.setContent(sp);
 		view.setParent(window);
@@ -81,7 +81,7 @@ public class PatientDashboard extends Dashboard {
 	@Override
 	public void showEditForm(int id) {
 		Patient selectedPatient =(Patient)getModel().getProfile(id);
-		Window window=new Window("Edit Patient",530,700);
+		Window window=new Window("Edit Patient",530,800);
 		EditPatientView view=new EditPatientView(selectedPatient);
 		saveButton = view.getSaveButton();
 		saveButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -113,7 +113,7 @@ public class PatientDashboard extends Dashboard {
 
 		ScrollPane sp = new ScrollPane();
 		sp.setMaxWidth(530);
-		sp.setMaxHeight(600);
+		sp.setMaxHeight(800);
 		sp.setContent(view);
 		window.setContent(sp);
 		view.setParent(window);

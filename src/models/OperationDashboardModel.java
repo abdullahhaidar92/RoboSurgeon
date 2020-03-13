@@ -168,29 +168,59 @@ public class OperationDashboardModel extends DashboardModel {
         ResultSet rs = null;
         String sql = "Select * from " +
                 "Operation join [Doctor] on Operation.DOCTORID = [Doctor].DOCTORID "
-                + "join [Patient] on Operation.PATIENTID = [Patient].PATIENTID "
+                + "join [Patient]  on Operation.PATIENTID = [Patient].PATIENTID "
                 + "join [Profile] on [Patient].PROFILEID = [Profile].PROFILEID "
                 + "join [Machine] on Operation.MACHINEID = [Machine].MACHINEID "
-                + "join [Surgery] on Operation.SURGERYID = [Surgery].SURGERYID ";  //where doctorid = currentuser
-        try {
-            try {
-                int i=Integer.parseInt(query);
-                sql += "Where [Patient].PATIENTID=?";   //fix to and
-                P = Database.getConnection().prepareStatement(sql);
-                P.setInt(1,i );
-            } catch (NumberFormatException e) {
-                sql += "Where FIRSTNAME=? Or LASTNAME=? Or NAME=?";
-                P = Database.getConnection().prepareStatement(sql);
-                P.setString(1, query);
-                P.setString(2, query);
-                P.setString(3, query);
-            }
-            rs=P.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+                + "join [Surgery] on Operation.SURGERYID = [Surgery].SURGERYID ";
 
-        return loadFromResultSet(rs);
+        String[] keywords;
+		if(query!=null) {
+			keywords = query.split(" ");
+			String arguments="( ?";
+			for(int i=1;i<keywords.length;i++)
+				arguments+=",?";
+			arguments+=")";
+		boolean flag=false;
+			try {
+				try {
+					int i = Integer.parseInt(keywords[0]);
+					sql += "Where PATIENTID=?";
+					P = Database.getConnection().prepareStatement(sql);
+					P.setInt(1, i);
+
+				} catch (NumberFormatException e) {
+					int N=0;
+					switch (keywords.length) {
+						case 1: sql += " Where  [PROFILE].FIRSTNAME in " + arguments + " or [PROFILE].LASTNAME in " + arguments +
+								" or NAME in " + arguments ;N=3;break;
+						case 2: sql += " Where ( [PROFILE].FIRSTNAME in " + arguments + " and [PROFILE].LASTNAME in " + arguments + ")" +
+								" OR ( [PROFILE].FIRSTNAME in " + arguments + " and [Surgery].NAME in " + arguments + ")" +
+								" OR ( [PROFILE].LASTNAME in " + arguments + " and [Surgery].NAME in " + arguments + ")"+
+								" OR ( [Surgery].NAME =? )";N=6;flag=true;break;
+						case 3: sql += " Where  ([PROFILE].FIRSTNAME in " + arguments + " and [PROFILE].LASTNAME in " + arguments
+								+ " and [Surgery].NAME in " + arguments +
+								") OR ( [Surgery].NAME = ?)";flag=true;N=3;break;
+					}
+
+					P = Database.getConnection().prepareStatement(sql);
+					int counter=1;
+					for(int i=0;i<N;i++) {
+						for(int j=0;j<keywords.length;j++) {
+							P.setString(counter, keywords[j]);
+							counter++;
+						}
+					}
+					if(flag)
+						P.setString(counter, query.trim());
+				}
+
+				rs = P.executeQuery();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return loadFromResultSet(rs);
 	}
 	public int getCurrentDocotorId(){
 		CurrentUser user = CurrentUser.getCurrentUser();
@@ -200,7 +230,6 @@ public class OperationDashboardModel extends DashboardModel {
 			currentDoctorId = currentUserId;
 		else {
 			String query = "Select doctorId from Assistant where assistantId = " + currentUserId;
-			//System.out.println(query);
 			ResultSet idRs = Database.getResults(query);
 			try {
 				idRs.next();

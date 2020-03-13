@@ -25,23 +25,55 @@ public class AssisstantDashboardModel extends DashboardModel<Assistant> {
         ResultSet rs = null;
         String sql = "Select * from Profile join \"USER\" on" +
                 " Profile.PROFILEID = \"USER\".PROFILEID join ASSISTANT on ASSISTANT.USERID= \"USER\".USERID ";
-        try {
+
+        String [] keywords;
+        if(query!=null) {
+            keywords = query.split(" ");
+            String arguments="( ?";
+            for(int i=1;i<keywords.length;i++)
+                arguments+=",?";
+            arguments+=")";
+            boolean flag=false;
             try {
-                int i=Integer.parseInt(query);
-                sql += "Where ASSISTANTID=?";
-                P = Database.getConnection().prepareStatement(sql);
-                P.setInt(1,i );
-            } catch (NumberFormatException e) {
-                sql += "Where FIRSTNAME=? Or LASTNAME=? Or CONTRACTTYPE=? ";
-                P = Database.getConnection().prepareStatement(sql);
-                P.setString(1, query);
-                P.setString(2, query);
-                P.setString(3, query);
+                try {
+                    int i = Integer.parseInt(keywords[0]);
+                    sql += "Where ASSISTANTID=?";
+                    P = Database.getConnection().prepareStatement(sql);
+                    P.setInt(1, i);
+
+                } catch (NumberFormatException e) {
+                    int N=0;
+                    switch (keywords.length) {
+                        case 1: sql += " Where  FIRSTNAME in " + arguments + " or LASTNAME in " + arguments +
+                                " or CONTRACTTYPE in " + arguments ;N=3;break;
+                        case 2: sql += " Where ( FIRSTNAME in " + arguments + " and LASTNAME in " + arguments + ")" +
+                                " OR ( FIRSTNAME in " + arguments + " and CONTRACTTYPE in " + arguments + ")" +
+                                " OR ( LASTNAME in " + arguments + " and CONTRACTTYPE in " + arguments + ")" +
+                                "OR (CONTRACTTYPE=?)";N=6;flag=true;break;
+                        case 3: sql += " Where  FIRSTNAME in " + arguments + " and LASTNAME in " + arguments
+                                + " and CONTRACTTYPE in " + arguments
+                                +"OR (CONTRACTTYPE=?)";N=3;flag=true;break;
+                    }
+
+                    P = Database.getConnection().prepareStatement(sql);
+                    int counter=1;
+                    for(int i=0;i<N;i++) {
+                        for(int j=0;j<keywords.length;j++) {
+                            P.setString(counter, keywords[j]);
+                            counter++;
+                        }
+                    }
+                    if(flag)
+                        P.setString(counter,query);
+                }
+                rs = P.executeQuery();
+            } catch (SQLException e) {
+               // e.printStackTrace();
             }
-            rs=P.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
+
+
+
 
         return loadFromResultSet(rs);
     }

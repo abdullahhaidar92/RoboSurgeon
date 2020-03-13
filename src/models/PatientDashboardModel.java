@@ -25,24 +25,49 @@ public class PatientDashboardModel extends DashboardModel<Patient> {
         ResultSet rs = null;
         String sql = "Select * from Profile join \"PATIENT\" on" +
                 " Profile.PROFILEID = \"PATIENT\".PROFILEID ";
-        try {
-            try {
-                int i=Integer.parseInt(query);
-                sql += "Where PATIENTID=?";
-                P = Database.getConnection().prepareStatement(sql);
-                P.setInt(1,i );
-            } catch (NumberFormatException e) {
-                sql += "Where FIRSTNAME=? Or LASTNAME=?";
-                P = Database.getConnection().prepareStatement(sql);
-                P.setString(1, query);
-                P.setString(2, query);
-            }
-            rs=P.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+     String[] keywords;
+		if(query!=null) {
+			keywords = query.split(" ");
+			String arguments="( ?";
+			for(int i=1;i<keywords.length;i++)
+				arguments+=",?";
+			arguments+=")";
 
-        return loadFromResultSet(rs);
+			try {
+				try {
+					int i = Integer.parseInt(keywords[0]);
+					sql += "Where PATIENTID=?";
+					P = Database.getConnection().prepareStatement(sql);
+					P.setInt(1, i);
+
+				} catch (NumberFormatException e) {
+					int N=0;
+					switch (keywords.length) {
+						case 1: sql += " Where  FIRSTNAME in " + arguments + " or LASTNAME in " + arguments
+								;N=2;break;
+						case 2: sql += " Where ( FIRSTNAME in " + arguments + " and LASTNAME in " + arguments + ")"
+								;N=2;break;
+						case 3: sql += " Where  FIRSTNAME in " + arguments +"and MIDDLENAME in " + arguments +" and LASTNAME in " + arguments
+								;N=2;break;
+					}
+
+					P = Database.getConnection().prepareStatement(sql);
+					int counter=1;
+					for(int i=0;i<N;i++) {
+						for(int j=0;j<keywords.length;j++) {
+							P.setString(counter, keywords[j]);
+							counter++;
+						}
+					}
+				}
+				rs = P.executeQuery();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+
+		return loadFromResultSet(rs);
     }
 
 
