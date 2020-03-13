@@ -11,8 +11,7 @@ public class Machine extends CommandHandler {
     private static XRay xRay;
     private static Machine machine;
     private static int emissionDuration;
-    public static double totalMagnitude=100;
-    private MultiVersionEnvironment environment;
+    public static double totalMagnitude = 100;
 
     public static Machine getMachine() {
         if (machine == null)
@@ -27,15 +26,13 @@ public class Machine extends CommandHandler {
         bottomCoil = new Coil();
         seed = Seed.getSeed();
         seed.setCoils(leftCoil, rightCoil, topCoil, bottomCoil);
-        xRay=XRay.getXRay();
+        xRay = XRay.getXRay();
 
-        leftCoil.setMagnitude(SAFE_RADIATION_LEVEL/2);
-        rightCoil.setMagnitude(SAFE_RADIATION_LEVEL/2);
-        topCoil.setMagnitude(SAFE_RADIATION_LEVEL/2);
-        bottomCoil.setMagnitude(SAFE_RADIATION_LEVEL/2);
+        leftCoil.setMagnitude(SAFE_RADIATION_LEVEL / 2);
+        rightCoil.setMagnitude(SAFE_RADIATION_LEVEL / 2);
+        topCoil.setMagnitude(SAFE_RADIATION_LEVEL / 2);
+        bottomCoil.setMagnitude(SAFE_RADIATION_LEVEL / 2);
 
-        environment=MultiVersionEnvironment.getEnvironment();
-        environment.initialze();
     }
 
 
@@ -56,12 +53,18 @@ public class Machine extends CommandHandler {
     }
 
 
-    public Coil getLeftCoil() {  return leftCoil; }
+    public Coil getLeftCoil() {
+        return leftCoil;
+    }
 
     public Coil getRightCoil() {
         return rightCoil;
     }
-    public Coil getTopCoil() {  return topCoil;   }
+
+    public Coil getTopCoil() {
+        return topCoil;
+    }
+
     public Coil getBottomCoil() {
         return bottomCoil;
     }
@@ -85,30 +88,24 @@ public class Machine extends CommandHandler {
 
     @Override
     public boolean moveUp(double value) {
-        double y=Machine.getMachine().getSeed().getyPos()-value/getInnerHeight();
-        if(y<0)
+        double y = Machine.getMachine().getSeed().getyPos() - value / getInnerHeight();
+        if (y < 0)
             return false;
-        double x=Seed.getSeed().getxPos();
-        move(x,y);
+        double x = Seed.getSeed().getxPos();
+        move(x, y);
         return true;
     }
 
-    private void move(double x,double y){
+    private void move(double x, double y) {
 
-        environment.initialze();
-        double[] magnitudes = environment.compute(new double[]{x,y,totalMagnitude});
-        double topM=magnitudes[0];
-        double bottomM=magnitudes[1];
-        double leftM=magnitudes[2];
-        double rightM=magnitudes[3];
-       /* DecimalFormat format=new DecimalFormat("##.00");
-        topM=Double.valueOf(format.format(topM));
-        bottomM=Double.valueOf(format.format(bottomM));
-        leftM=Double.valueOf(format.format(leftM));
-        rightM=Double.valueOf(format.format(rightM));
 
-        */
-
+        RelativePositionsMoveStrategy strategy = new RelativePositionsMoveStrategy();
+        strategy.execute(x, y, totalMagnitude);
+        double[] magnitudes = strategy.getResults();
+        double topM = magnitudes[0];
+        double bottomM = magnitudes[1];
+        double leftM = magnitudes[2];
+        double rightM = magnitudes[3];
         setTopCoilMagnitude(topM);
         setBottomCoilMagnitude(bottomM);
         setLeftCoilMagnitude(leftM);
@@ -117,31 +114,31 @@ public class Machine extends CommandHandler {
 
     @Override
     public boolean moveDown(double value) {
-        double y=Machine.getMachine().getSeed().getyPos()+value/getInnerHeight();
-        if(y>1)
+        double y = Machine.getMachine().getSeed().getyPos() + value / getInnerHeight();
+        if (y > 1)
             return false;
-        double x=Seed.getSeed().getxPos();
-        move(x,y);
+        double x = Seed.getSeed().getxPos();
+        move(x, y);
         return true;
     }
 
     @Override
     public boolean moveRight(double value) {
-        double x=Machine.getMachine().getSeed().getxPos()+value/getInnerWidth();
-        if(x>1)
+        double x = Machine.getMachine().getSeed().getxPos() + value / getInnerWidth();
+        if (x > 1)
             return false;
-        double y=Seed.getSeed().getyPos();
-        move(x,y);
+        double y = Seed.getSeed().getyPos();
+        move(x, y);
         return true;
     }
 
     @Override
     public boolean moveLeft(double value) {
-        double x=Machine.getMachine().getSeed().getxPos()-value/getInnerWidth();
-        if(x>1)
+        double x = Machine.getMachine().getSeed().getxPos() - value / getInnerWidth();
+        if (x > 1)
             return false;
-        double y=Seed.getSeed().getyPos();
-        move(x,y);
+        double y = Seed.getSeed().getyPos();
+        move(x, y);
         return true;
     }
 
@@ -154,7 +151,7 @@ public class Machine extends CommandHandler {
     @Override
     public boolean setEmissionDuration(int value) {
 
-        emissionDuration=value;
+        emissionDuration = value;
         return true;
     }
 
@@ -176,10 +173,9 @@ public class Machine extends CommandHandler {
 
     @Override
     public boolean stopXRay() {
-         xRay.setOff();
-         return true;
+        xRay.setOff();
+        return true;
     }
-
 
 
     public static XRay getXRay() {
