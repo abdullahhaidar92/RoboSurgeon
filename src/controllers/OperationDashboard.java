@@ -30,7 +30,7 @@ public class OperationDashboard extends Dashboard {
 	DeleteOperationView deleteOperationView;
 	public OperationDashboard(DashboardView view, DashboardModel model) {
 		super(view, model);
-		getView().getSearchField().setPromptText("Search by id, first name, last name or speciality ");
+		getView().getSearchField().setPromptText("Search by patient name or id, or surgery type ");
 	}
 
 	@Override
