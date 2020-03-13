@@ -1,14 +1,14 @@
  .header .label {
-     -fx-text-fill: white;
-      -fx-font-size:20px;
+    -fx-text-fill:derive(yellow,-5%);
+          -fx-font-size:20px;
       -fx-padding: 10 20 10 10;
  }
  .header {
      -fx-background-color:
-           linear-gradient(to bottom right,teal,derive(yellow,-20%));
+           linear-gradient(to bottom right,purple,derive(purple,+60%));
      -fx-background-insets: 0 0 0 0, 1 0 1 0;
      -fx-background-radius: 0, 0 ;
-     -fx-padding:2,15,0,0;
+     -fx-padding:-4,15,-4,0;
 
  }
 
@@ -21,15 +21,13 @@
     -fx-background-radius: 0;
     -fx-background-color: transparent;
     -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 25px;
+    -fx-font-size: 15px;
     -fx-text-fill:teal;
     -fx-background-radius: 0, 0;
-    -fx-padding:7,7,0,0;
     -fx-cursor:hand;
 }
 
 .close:focused {
-    -fx-border-color: transparent, red;
     -fx-border-width: 1, 1;
     -fx-border-style: solid, segments(1, 2);
     -fx-border-radius: 0, 0;
@@ -38,7 +36,6 @@
 }
 
 .close:pressed {
-    -fx-background-color:  red;
     -fx-text-fill: white;
     -fx-cursor:hand;
 }
