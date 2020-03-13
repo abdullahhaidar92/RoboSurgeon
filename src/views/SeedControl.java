@@ -13,6 +13,7 @@ import application.Database;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import machine.HealthMonitor;
+import machine.SafetyKernel;
 
 public class SeedControl extends VBox {
         OperationDashboard operationDashboard;
@@ -92,6 +93,8 @@ public class SeedControl extends VBox {
                 if(rs.next()) {
                     result[0] = rs.getInt("MAXRADIATION");
                     result[1] = rs.getInt("MAXTIMER");
+                    SafetyKernel.MAX_Radiation=result[0];
+                    SafetyKernel.MAX_Duration=result[1];
 
                 }
             }

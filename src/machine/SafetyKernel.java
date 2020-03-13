@@ -7,7 +7,7 @@ public class SafetyKernel extends CommandHandler {
     private Machine machine = Machine.getMachine();
     private int MAX_XPOS=10;
     private int MAX_YPOS=10;
-    private static int MAX_Duration=12;
+    public static int MAX_Duration=12;
     public static int MAX_Radiation=12;
     private Seed seed =Seed.getSeed();
 

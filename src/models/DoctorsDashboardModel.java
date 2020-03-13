@@ -45,7 +45,7 @@ public class DoctorsDashboardModel extends DashboardModel<Doctor> {
                     int N=0;
                     switch (keywords.length) {
                         case 1: sql += " Where  FIRSTNAME in " + arguments + " or LASTNAME in " + arguments +
-                                " or SPECIALTY in " + arguments ;N=3;System.out.println("One");break;
+                                " or SPECIALTY in " + arguments ;N=3;break;
                         case 2: sql += " Where ( FIRSTNAME in " + arguments + " and LASTNAME in " + arguments + ")" +
                                 " OR ( FIRSTNAME in " + arguments + " and SPECIALTY in " + arguments + ")" +
                                 " OR ( LASTNAME in " + arguments + " and SPECIALTY in " + arguments + ")";N=6;break;
