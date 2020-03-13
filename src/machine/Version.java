@@ -25,7 +25,7 @@ public class Version extends Thread {
 
     @Override
     public void run() {
-
+        try {
         String s;
         List<String> commands = new ArrayList();
         commands.add(program);
@@ -38,7 +38,7 @@ public class Version extends Thread {
         ProcessBuilder pb = new ProcessBuilder(commands);
         pb.directory(new File(path));
         Process process = null;
-        try {
+
             process = pb.start();
         BufferedReader stdInput = new BufferedReader(new
                 InputStreamReader(process.getInputStream()));
